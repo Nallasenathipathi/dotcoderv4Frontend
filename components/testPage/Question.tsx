@@ -1,17 +1,17 @@
 import React from 'react';
 
-const Question = () => {
+const Question = ({ dragHandleProps }:any) => {
 	return (
 		<div
-			className='position-relative rounded-1 bg-white d-flex flex-column h-100' 
+			className='card position-relative rounded-1 d-flex flex-column h-100' 
 			style={{ flex: '1 1 auto', overflow: 'hidden' }}>
 			{/* Header */}
-			<div className='p-3' style={{ backgroundColor: '#f2f2f2' }}>
-				Question
+			<div  className='p-3' style={{ backgroundColor: '#f2f2f2' }}>
+				<span {...dragHandleProps}>Question</span>
 			</div>
 
 			<div className='flex-grow-1 overflow-auto p-3'>
-				{/* You can add middle content here */}
+				You can add middle content here
 			</div>
 
 			{/* Footer */}
