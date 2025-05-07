@@ -20,3 +20,137 @@
 .form-floating > .form-select ~ label::after {
 	background-color: #212529;
 }
+
+
+
+// active_course
+
+// active course page css
+.accordion-item:not(:last-of-type) .accordion-body::after {
+	display: none !important;
+}
+
+// @media (min-width: 992px) and (min-width: 1200px) {
+// 	.active_course{
+// 		margin: 1rem 3.5rem;
+// 	}
+// }
+
+
+
+.topic_course .accordion-header{
+	border-top: 1.5px solid #ccc;
+}
+
+.topic_course .accordion-body{
+	padding: 0px;
+}
+
+
+.ac_card-body {
+	position: relative;
+	padding-left: 25px;
+  }
+
+  .ac_card-body::before {
+	content: '';
+	position: absolute;
+	left: 19px;
+	top: 0;
+	bottom: 27px;
+	width: 2px;
+	background-color: #ececed;
+  }
+
+  .ac_card-body .list {
+	position: relative;
+	padding-left: 10px;
+	padding-top: 20px;
+  }
+
+  .ac_card-body .list::before {
+	content: '';
+	position: absolute;
+	left: -15px;
+	top: 50%;
+	transform: translateY(-50%);
+	width: 20px;
+	height: 20px;
+	border-radius: 50%;
+	background-color: #ececed;
+  }
+
+ 
+
+  .ac_card-body .list h4 {
+	margin: 0;
+	font-size: 16px;
+	font-weight: bold;
+  }
+
+  .ac_card-body .list p {
+	margin: 5px 0 0;
+	color: #666;
+	font-size: 14px;
+  }
+
+
+  .step-indicator {
+	position: absolute;
+	left: -15px;
+	top: 50%;
+	transform: translateY(-50%);
+	width: 20px;
+	height: 20px;
+	border-radius: 50%;
+	background-color: #46bcaa;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+  }
+
+  .list.active .step-indicator {
+	background-color: #46bcaa;
+  }
+
+  .list .step-indicator svg {
+	width: 12px;
+	height: 12px;
+	fill: #fff;
+  }
+  .ac_right_section{
+	height: 72vh !important;
+  }
+
+  .ac_main .card-actions{
+	background-color: #EDF8F7;
+	padding-top: 14px;
+	padding-left: 17px;
+	padding-right: 17px;
+	padding-bottom: 0px;
+    border-radius: 20px;
+  }
+
+  .ac_main .nav-tabs{
+	border-bottom: 0;
+	display: flex;
+    gap: 5px;
+	
+  }
+
+  .ac_main .nav-link{
+	font-size: 13px;
+    font-weight: 500;
+    color: #46BCAA;
+  }
+
+  .ac_main .nav-tabs .nav-link:hover{
+    color: #fff;
+	background: #46BCAA;
+  }
+
+  .nav-tabs .nav-link.active ,
+  .nav-tabs .nav-link:focus{
+	color: #fff;
+	background: #46BCAA;
+  }
