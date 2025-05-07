@@ -20,7 +20,6 @@ const IndexPage: React.FC = () => {
 			};
 		}
 	}, []);
-	let data: any = `data-swapy-handle style={{ cursor: 'grab' }}`;
 
 	return (
 		<div

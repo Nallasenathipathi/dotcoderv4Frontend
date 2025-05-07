@@ -1,4 +1,4 @@
-import React, { FC, useCallback, useContext, useState } from 'react';
+import React, { FC, useCallback, useContext } from 'react';
 import type { NextPage } from 'next';
 import { GetStaticProps } from 'next';
 import Head from 'next/head';
@@ -7,7 +7,7 @@ import { useRouter } from 'next/router';
 import { useFormik } from 'formik';
 import classNames from 'classnames';
 import AuthContext from '../../../context/authContext';
-import useDarkMode from '../../../hooks/useDarkMode';
+// import useDarkMode from '../../../hooks/useDarkMode';
 import USERS, { getUserDataWithUsername } from '../../../common/data/userDummyData';
 import PageWrapper from '../../../layout/PageWrapper/PageWrapper';
 import Card, { CardBody } from '../../../components/bootstrap/Card';
@@ -16,34 +16,64 @@ import FormGroup from '../../../components/bootstrap/forms/FormGroup';
 import Input from '../../../components/bootstrap/forms/Input';
 import Carousel from '../../../components/bootstrap/Carousel';
 
-let amypoLogo;
-let login_one;
-let login_two;
-let login_three;
+let amypoLogo: any | null = null;
+let login_one: any | null = null;
+let login_two: any | null = null;
+let login_three: any | null = null;
 
-try {
-	amypoLogo = require('../../../assets/img/logo/amypo_trans_logo.png');
-} catch (error) {
-	amypoLogo = null;
-}
+(async () => {
+	try {
+		const logo = await import('../../../assets/img/logo/amypo_trans_logo.png');
+		amypoLogo = logo.default;
+	} catch {
+		amypoLogo = null;
+	}
 
-try {
-	login_one = require('../../../assets/img/login_image/3d1.png');
-} catch (error) {
-	login_one = null;
-}
+	try {
+		const logo = await import('../../../assets/img/login_image/3d1.png');
+		login_two = logo.default;
+	} catch {
+		login_two = null;
+	}
 
-try {
-	login_two = require('../../../assets/img/login_image/3d2.png');
-} catch (error) {
-	login_two = null;
-}
+	try {
+		const logo = await import('../../../assets/img/login_image/3d2.png');
+		login_three = logo.default;
+	} catch {
+		login_three = null;
+	}
 
-try {
-	login_three = require('../../../assets/img/login_image/3d3.png');
-} catch (error) {
-	login_three = null;
-}
+	try {
+		const logo = await import('../../../assets/img/login_image/3d3.png');
+		login_one = logo.default;
+	} catch {
+		login_one = null;
+	}
+})();
+
+// try {
+// 	amypoLogo = require('../../../assets/img/logo/amypo_trans_logo.png');
+// } catch (error) {
+// 	amypoLogo = null;
+// }
+
+// try {
+// 	login_one = require('../../../assets/img/login_image/3d.png');
+// } catch (error) {
+// 	login_one = null;
+// }
+
+// try {
+// 	login_two = require('../../../assets/img/login_image/3d2.png');
+// } catch (error) {
+// 	login_two = null;
+// }
+
+// try {
+// 	login_three = require('../../../assets/img/login_image/3d3.png');
+// } catch (error) {
+// 	login_three = null;
+// }
 
 interface ILoginHeaderProps {
 	isNewUser?: boolean;
@@ -70,15 +100,18 @@ interface ILoginProps {
 }
 
 // eslint-disable-next-line react/prop-types
-const Login: NextPage<ILoginProps> = ({ isSignUp }) => {
+const Login: NextPage<ILoginProps> = () => {
 	const router = useRouter();
 
 	const { setUser } = useContext(AuthContext);
 
-	const { darkModeStatus } = useDarkMode();
+	// const { darkModeStatus } = useDarkMode();
 
-	const [signInPassword, setSignInPassword] = useState<boolean>(false);
-	const [singUpStatus, setSingUpStatus] = useState<boolean>(!!isSignUp);
+	// const [signInPassword, setSignInPassword] = useState<boolean>(false);
+	// const [singUpStatus, setSingUpStatus] = useState<boolean>(!!isSignUp);
+
+	const signInPassword = false;
+	const singUpStatus = false;
 
 	const handleOnClick = useCallback(() => router.push('/'), [router]);
 
@@ -125,22 +158,22 @@ const Login: NextPage<ILoginProps> = ({ isSignUp }) => {
 		},
 	});
 
-	const [isLoading, setIsLoading] = useState<boolean>(false);
-	const handleContinue = () => {
-		setIsLoading(true);
-		setTimeout(() => {
-			if (
-				!Object.keys(USERS).find(
-					(f) => USERS[f].username.toString() === formik.values.loginUsername,
-				)
-			) {
-				formik.setFieldError('loginUsername', 'No such user found in the system.');
-			} else {
-				setSignInPassword(true);
-			}
-			setIsLoading(false);
-		}, 1000);
-	};
+	// const [isLoading, setIsLoading] = useState<boolean>(false);
+	// const handleContinue = () => {
+	// 	setIsLoading(true);
+	// 	setTimeout(() => {
+	// 		if (
+	// 			!Object.keys(USERS).find(
+	// 				(f) => USERS[f].username.toString() === formik.values.loginUsername,
+	// 			)
+	// 		) {
+	// 			formik.setFieldError('loginUsername', 'No such user found in the system.');
+	// 		} else {
+	// 			setSignInPassword(true);
+	// 		}
+	// 		setIsLoading(false);
+	// 	}, 1000);
+	// };
 
 	return (
 		<PageWrapper

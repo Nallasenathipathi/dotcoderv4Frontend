@@ -1,22 +1,14 @@
 import React from 'react';
-import Card, {
-	CardBody,
-	CardHeader,
-	CardLabel,
-	CardSubTitle,
-	CardTitle,
-} from '../../../../components/bootstrap/Card';
+import Card, { CardBody } from '../../../../components/bootstrap/Card';
 import FormGroup from '../../../../components/bootstrap/forms/FormGroup';
 import Input from '../../../../components/bootstrap/forms/Input';
 import { useFormik } from 'formik';
-import useDarkMode from '../../../../hooks/useDarkMode';
-import classNames from 'classnames';
+// import useDarkMode from '../../../../hooks/useDarkMode';
 import PageWrapper from '../../../../layout/PageWrapper/PageWrapper';
 import Select from '../../../../components/bootstrap/forms/Select';
 import Button from '../../../../components/bootstrap/Button';
-import Icon from '../../../../components/icon/Icon';
 
-function index() {
+const Index: React.FC = () => {
 	const SELECT_OPTIONS = [
 		{ value: 1, text: 'One' },
 		{ value: 2, text: 'Two' },
@@ -52,7 +44,7 @@ function index() {
 			// setTimeout(handleSave, 2000);
 		},
 	});
-	const { darkModeStatus } = useDarkMode();
+	// const { darkModeStatus } = useDarkMode();
 	return (
 		<PageWrapper>
 			<div className='d-flex justify-content-between mx-3 mb-4 mt-2'>
@@ -134,7 +126,7 @@ function index() {
 
 						<div className='col-4'>
 							<FormGroup formText='Image should be in WEBP or PNG or JPEG'>
-								<Input type='file' autoComplete='photo'></Input>
+								<Input type='file' autoComplete='photo' />
 							</FormGroup>
 						</div>
 					</div>
@@ -221,7 +213,7 @@ function index() {
 							<FormGroup
 								formText='Image should be in WEBP or PNG or JPEG'
 								label='Please select'>
-								<Input type='file' autoComplete='photo'></Input>
+								<Input type='file' autoComplete='photo' />
 							</FormGroup>
 						</div>
 					</div>
@@ -316,6 +308,6 @@ function index() {
 			</Card>
 		</PageWrapper>
 	);
-}
+};
 
-export default index;
+export default Index;
