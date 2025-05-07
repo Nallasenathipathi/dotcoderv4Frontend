@@ -296,7 +296,7 @@ function index() {
 									<th scope='col'>Name</th>
 									<th scope='col'>Sales</th>
 									<th scope='col'>Store</th>
-									<th scope='col'>
+									<th scope='col ' className='text-center'>
 										Actions
 									</th>
 								</tr>
@@ -308,8 +308,7 @@ function index() {
 												<td>Otto</td>
                         <td>Otto</td>
                         <td>Otto</td>
-                        <td>  <Button	color='dark' isLight icon='Edit' tag='a'/></td>
-
+                        <td className='d-flex gap-2 justify-content-center'> <Button	color='danger' isLight icon='delete' tag='a'/> <Button	color='info' isLight icon='Edit' tag='a'/></td>
 											</tr>
                       <tr>
 												<th scope='row'>1</th>
@@ -317,9 +316,7 @@ function index() {
 												<td>Otto</td>
                         <td>Otto</td>
                         <td>Otto</td>
-
-
-                        <td className='d-flex gap-2 text-end'> <Button	color='danger' isLight icon='delete' tag='a'/> <Button	color='info' isLight icon='Edit' tag='a'/></td>
+                        <td className='d-flex gap-2 justify-content-center'> <Button	color='danger' isLight icon='delete' tag='a'/> <Button	color='info' isLight icon='Edit' tag='a'/></td>
 											</tr>
                       <tr>
 												<th scope='row'>1</th>
@@ -327,9 +324,7 @@ function index() {
 												<td>Otto</td>
                         <td>Otto</td>
                         <td>Otto</td>
-
-
-                        <td>  <Button	color='dark' isLight icon='Edit' tag='a'/></td>
+                        <td className='d-flex gap-2 justify-content-center'> <Button	color='danger' isLight icon='delete' tag='a'/> <Button	color='info' isLight icon='Edit' tag='a'/></td>
                         </tr>
                       <tr>
 												<th scope='row'>1</th>
@@ -338,9 +333,7 @@ function index() {
                         <td>Otto</td>
                         <td>Otto</td>
                         <td>Otto</td>
-
-
-                      <td>  <Button	color='dark' isLight icon='Edit' tag='a'/></td>
+                        <td className='d-flex gap-2 justify-content-center'> <Button	color='danger' isLight icon='delete' tag='a'/> <Button	color='info' isLight icon='Edit' tag='a'/></td>
 											</tr>
 							 
 							</tbody>
