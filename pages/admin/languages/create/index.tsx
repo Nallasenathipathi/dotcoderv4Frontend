@@ -71,8 +71,9 @@ function index() {
           <h4 className='fw-semibold mb-3'>Add Content</h4>
           <div className='row g-4'>
             <div className='col-md-4'>
-            <FormGroup id='firstName' label='First Name'>
+            <FormGroup id='firstName' label='First Name' isFloating>
 											<Input
+                         className=''
 												placeholder='First Name'
 												autoComplete='additional-name'
 												onChange={formik.handleChange}
@@ -86,8 +87,9 @@ function index() {
 						</FormGroup>
             </div>
             <div className='col-4'>
-            <FormGroup id='phone' label='Language Id'>
-											<Input
+            <FormGroup id='phone'  label='Language Id' isFloating>
+											<Input 
+                      className=''
 												type='tel'
 												placeholder='Language Id'
 												autoComplete='tel'
@@ -102,9 +104,9 @@ function index() {
 										</FormGroup>
             </div>
             <div className='col-4'>
-            <FormGroup id='phone' label='Course Name'>
+            <FormGroup id='phone'  label='Course Name' isFloating>
 											<Input
-												type='tel'
+												type='tel' className=''
 												placeholder=' Enter Course Name'
 												autoComplete='tel'
 												onChange={formik.handleChange}
@@ -119,29 +121,29 @@ function index() {
             </div>
            
             <div className='col-4'>
-													<FormGroup
-														id='exampleSelectOneWay'
-														label='Please select'
-														className='col-12'>
-														<Select
-                           
-															ariaLabel='Default select example'
-															placeholder='Open this select menu'
-															onChange={formikOneWay.handleChange}
-															value={
-																formikOneWay.values
-																	.exampleSelectOneWay
-															}
-															list={SELECT_OPTIONS}
-														/>
-													</FormGroup>
+            <FormGroup
+                          id='exampleSelectOneWay'
+                          
+                          >
+                          <Select className='py-3'
+                         
+                            ariaLabel='Default select example'
+                            placeholder='Open this select menu'
+                            onChange={formikOneWay.handleChange}
+                            value={
+                              formikOneWay.values
+                                .exampleSelectOneWay
+                            }
+                            list={SELECT_OPTIONS}
+                          />
+                        </FormGroup>
 													
 						</div>
 
             
             <div className='col-4'>
               <FormGroup formText='Image should be in WEBP or PNG or JPEG'
-              label='Please select'>
+              >
             <Input type='file' autoComplete='photo' ></Input>
             </FormGroup>
             </div>
@@ -166,6 +168,110 @@ function index() {
           </div>
         </CardBody>
       </Card>
+
+      <Card>
+      
+      <CardBody>
+        <h4 className='fw-semibold mb-3'>Add Content</h4>
+        <div className='row g-4'>
+          <div className='col-md-4'>
+          <FormGroup id='firstName' label='First Name'>
+                    <Input
+                       className='py-3'
+                      placeholder='First Name'
+                      autoComplete='additional-name'
+                      onChange={formik.handleChange}
+                      onBlur={formik.handleBlur}
+                      value={formik.values.firstName}
+                      isValid={formik.isValid}
+                      isTouched={formik.touched.firstName}
+                      invalidFeedback={formik.errors.firstName}
+                      validFeedback='Looks good!'
+                    />
+          </FormGroup>
+          </div>
+          <div className='col-4'>
+          <FormGroup id='phone'  label='Language Id'>
+                    <Input 
+                    className='py-3'
+                      type='tel'
+                      placeholder='Language Id'
+                      autoComplete='tel'
+                      onChange={formik.handleChange}
+                      onBlur={formik.handleBlur}
+                      value={formik.values.phone}
+                      isValid={formik.isValid}
+                      isTouched={formik.touched.phone}
+                      invalidFeedback={formik.errors.phone}
+                      validFeedback='Looks good!'
+                    />
+                  </FormGroup>
+          </div>
+          <div className='col-4'>
+          <FormGroup id='phone'  label='Course Name'>
+                    <Input
+                      type='tel' className='py-3'
+                      placeholder=' Enter Course Name'
+                      autoComplete='tel'
+                      onChange={formik.handleChange}
+                      onBlur={formik.handleBlur}
+                      value={formik.values.phone}
+                      isValid={formik.isValid}
+                      isTouched={formik.touched.phone}
+                      invalidFeedback={formik.errors.phone}
+                      validFeedback='Looks good!'
+                    />
+                  </FormGroup>
+          </div>
+         
+          <div className='col-4'>
+                        <FormGroup
+                          id='exampleSelectOneWay'
+                          label='Please select'
+                          >
+                          <Select className='py-3'
+                         
+                            ariaLabel='Default select example'
+                            placeholder='Open this select menu'
+                            onChange={formikOneWay.handleChange}
+                            value={
+                              formikOneWay.values
+                                .exampleSelectOneWay
+                            }
+                            list={SELECT_OPTIONS}
+                          />
+                        </FormGroup>
+                        
+          </div>
+
+          
+          <div className='col-4'>
+            <FormGroup formText='Image should be in WEBP or PNG or JPEG'
+            label='Please select'>
+          <Input type='file' autoComplete='photo' ></Input>
+          </FormGroup>
+          </div>
+         
+        </div>
+        <div className='d-flex gap-3 align-itms-center justify-content-center mt-3'>
+       
+                    <Button
+                  icon='PublishedWithChanges'
+                  color='success'
+                  isLight
+                  className=''>
+                  Save
+                </Button>
+                    <Button
+                  icon='Cancel'
+                  color='danger'
+                  isLight
+                  className=''>
+                  Cancel
+                </Button>
+        </div>
+      </CardBody>
+    </Card>
 
       <Card>
       <div className='d-flex justify-content-between mx-4 mb-1 mt-4'>
