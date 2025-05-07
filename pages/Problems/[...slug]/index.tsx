@@ -20,18 +20,17 @@ const IndexPage: React.FC = () => {
 			};
 		}
 	}, []);
-	let data:any = `data-swapy-handle style={{ cursor: 'grab' }}`
+	let data: any = `data-swapy-handle style={{ cursor: 'grab' }}`;
 
 	return (
 		<div
 			className='swap-container w-100 overflow-x-hidden p-2'
 			style={{
-				height: "100vh", // Make it fixed to viewport height
-				width: "100vw",
+				height: '100vh', // Make it fixed to viewport height
+				width: '100vw',
 				backgroundColor: '#c7c7c5',
 				overflow: 'hidden', // Prevent any scroll
-			}}
-		>
+			}}>
 			<div className='w-100 h-100 d-flex flex-column'>
 				<div className='row' style={{ flex: '0 0 auto' }}>
 					<div className='col-12'>
@@ -46,7 +45,12 @@ const IndexPage: React.FC = () => {
 						<Panel defaultSize={25}>
 							<div className='h-100' data-swapy-slot='sd'>
 								<div className='content-a h-100' data-swapy-item='c'>
-									<Question dragHandleProps={{ 'data-swapy-handle': true, style: { cursor: 'grab' } }} />
+									<Question
+										dragHandleProps={{
+											'data-swapy-handle': true,
+											style: { cursor: 'grab' },
+										}}
+									/>
 								</div>
 							</div>
 						</Panel>
@@ -59,7 +63,12 @@ const IndexPage: React.FC = () => {
 								<Panel defaultSize={25}>
 									<div className='h-100' data-swapy-slot='foo'>
 										<div className='content-a h-100' data-swapy-item='a'>
-											<Solution dragHandleProps={{ 'data-swapy-handle': true, style: { cursor: 'grab' } }}/>
+											<Solution
+												dragHandleProps={{
+													'data-swapy-handle': true,
+													style: { cursor: 'grab' },
+												}}
+											/>
 										</div>
 									</div>
 								</Panel>
@@ -70,7 +79,12 @@ const IndexPage: React.FC = () => {
 								<Panel>
 									<div className='h-100' data-swapy-slot='bar'>
 										<div className='content-b h-100' data-swapy-item='b'>
-											<Question dragHandleProps={{ 'data-swapy-handle': true, style: { cursor: 'grab' } }}/>
+											<Question
+												dragHandleProps={{
+													'data-swapy-handle': true,
+													style: { cursor: 'grab' },
+												}}
+											/>
 										</div>
 									</div>
 								</Panel>
@@ -80,7 +94,6 @@ const IndexPage: React.FC = () => {
 				</div>
 			</div>
 		</div>
-
 	);
 };
 

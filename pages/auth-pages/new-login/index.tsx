@@ -367,12 +367,12 @@ const Login: NextPage<ILoginProps> = ({ isSignUp }) => {
 													</FormGroup>
 												</div>
 												<div className='col-12'>
-                                                    <Button
-                                                        color='success'
-                                                        className='w-100 py-3'
-                                                        onClick={formik.handleSubmit}>
-                                                        Login
-                                                    </Button>
+													<Button
+														color='success'
+														className='w-100 py-3'
+														onClick={formik.handleSubmit}>
+														Login
+													</Button>
 												</div>
 												<div className='text-start h6 text-muted mb-2 mt-3'>
 													Connect With Us ,

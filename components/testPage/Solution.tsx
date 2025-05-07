@@ -1,7 +1,7 @@
 import React from 'react';
 import MonachoEditor from '../editors/MonachoEditor';
 
-const Solution = ({dragHandleProps} :any) => {
+const Solution = ({ dragHandleProps }: any) => {
 	return (
 		<div
 			className=' rounded-1 bg-white d-flex flex-column h-100'

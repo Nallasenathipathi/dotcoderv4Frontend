@@ -31,17 +31,17 @@ const DefaultHeader = () => {
 					}
 				/> */}
 				<Button
-							// eslint-disable-next-line react/jsx-props-no-spreading
-							{...styledBtn}
-							onClick={() => setDarkModeStatus(!darkModeStatus)}
-							className='btn-only-icon'
-							data-tour='dark-mode'>
-							<Icon
-								icon={darkModeStatus ? 'DarkMode' : 'LightMode'}
-								color={darkModeStatus ? 'info' : 'warning'}
-								className='btn-icon'
-							/>
-						</Button>
+					// eslint-disable-next-line react/jsx-props-no-spreading
+					{...styledBtn}
+					onClick={() => setDarkModeStatus(!darkModeStatus)}
+					className='btn-only-icon'
+					data-tour='dark-mode'>
+					<Icon
+						icon={darkModeStatus ? 'DarkMode' : 'LightMode'}
+						color={darkModeStatus ? 'info' : 'warning'}
+						className='btn-icon'
+					/>
+				</Button>
 			</HeaderLeft>
 			{/* <CommonHeaderRight /> */}
 		</Header>
