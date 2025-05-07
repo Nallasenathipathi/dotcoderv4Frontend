@@ -3,14 +3,36 @@ import Card, { CardBody, CardHeader, CardLabel, CardSubTitle, CardTitle } from '
 import FormGroup from '../../../../components/bootstrap/forms/FormGroup'
 import Input from '../../../../components/bootstrap/forms/Input'
 import { useFormik } from 'formik';
+import useDarkMode from '../../../../hooks/useDarkMode';
+import classNames from 'classnames';
+import PageWrapper from '../../../../layout/PageWrapper/PageWrapper';
+import Select from '../../../../components/bootstrap/forms/Select';
+import Button from '../../../../components/bootstrap/Button';
+import Icon from '../../../../components/icon/Icon';
 
 
 function index() {
 
+   const SELECT_OPTIONS = [
+    { value: 1, text: 'One' },
+    { value: 2, text: 'Two' },
+    { value: 3, text: 'Three' },
+    { value: 4, text: 'Four' },
+    { value: 5, text: 'Five' },
+    { value: 6, text: 'Six' },
+  ];
+  const formikOneWay = useFormik({
+		initialValues: {
+			exampleSelectOneWay: '',
+		},
+		onSubmit: (values) => {
+			alert(JSON.stringify(values, null, 2));
+		},
+	});
   const formik = useFormik({
 		initialValues: {
-			firstName: 'John',
-			lastName: 'Doe',
+			firstName: '',
+			lastName: '',
 			displayName: 'johndoe',
 			emailAddress: 'johndoe@site.com',
 			phone: '',
@@ -26,72 +48,201 @@ function index() {
 			// setTimeout(handleSave, 2000);
 		},
 	});
-
+  const { darkModeStatus } = useDarkMode();
   return (
-    <>
+    
+    <PageWrapper>
+      <div className='d-flex justify-content-between mx-3 mb-4 mt-2'>
+      <h4 className='fw-semibold m-0'>Language</h4>
+      <div>
+      <Button
+										icon='ControlPoint'
+										color='success'
+										isLight
+										className=''>
+										Create
+									</Button>
+      </div>
+      </div>
+
       <Card>
-        <CardHeader>
-          <CardLabel icon='Person' iconColor='success'>
-            <CardTitle>Personal Information</CardTitle>
-            <CardSubTitle>User's credentials</CardSubTitle>
-          </CardLabel>
-        </CardHeader>
+      
         <CardBody>
+          <h4 className='fw-semibold mb-3'>Add Content</h4>
           <div className='row g-4'>
-            <div className='col-md-6'>
-              <FormGroup id='firstName' label='First Name' isFloating>
-                <Input
-                  placeholder='First Name'
-                  autoComplete='additional-name'
-                  onChange={formik.handleChange}
-                  onBlur={formik.handleBlur}
-                  value={formik.values.firstName}
-                  isValid={formik.isValid}
-                  isTouched={formik.touched.firstName}
-                  invalidFeedback={formik.errors.firstName}
-                  validFeedback='Looks good!'
-                />
-              </FormGroup>
+            <div className='col-md-4'>
+            <FormGroup id='firstName' label='First Name'>
+											<Input
+												placeholder='First Name'
+												autoComplete='additional-name'
+												onChange={formik.handleChange}
+												onBlur={formik.handleBlur}
+												value={formik.values.firstName}
+												isValid={formik.isValid}
+												isTouched={formik.touched.firstName}
+												invalidFeedback={formik.errors.firstName}
+												validFeedback='Looks good!'
+											/>
+						</FormGroup>
             </div>
-            <div className='col-md-6'>
-              <FormGroup id='lastName' label='Last Name' isFloating>
-                <Input
-                  placeholder='Last Name'
-                  autoComplete='family-name'
-                  onChange={formik.handleChange}
-                  onBlur={formik.handleBlur}
-                  value={formik.values.lastName}
-                  isValid={formik.isValid}
-                  isTouched={formik.touched.lastName}
-                  invalidFeedback={formik.errors.lastName}
-                  validFeedback='Looks good!'
-                />
-              </FormGroup>
+            <div className='col-4'>
+            <FormGroup id='phone' label='Language Id'>
+											<Input
+												type='tel'
+												placeholder='Language Id'
+												autoComplete='tel'
+												onChange={formik.handleChange}
+												onBlur={formik.handleBlur}
+												value={formik.values.phone}
+												isValid={formik.isValid}
+												isTouched={formik.touched.phone}
+												invalidFeedback={formik.errors.phone}
+												validFeedback='Looks good!'
+											/>
+										</FormGroup>
             </div>
-            <div className='col-12'>
-              <FormGroup
-                id='displayName'
-                label='Display Name'
-                isFloating
-                formText='This will be how your name will be displayed in the account section and in reviews'>
-                <Input
-                  placeholder='Display Name'
-                  autoComplete='username'
-                  onChange={formik.handleChange}
-                  onBlur={formik.handleBlur}
-                  value={formik.values.displayName}
-                  isValid={formik.isValid}
-                  isTouched={formik.touched.displayName}
-                  invalidFeedback={formik.errors.displayName}
-                  validFeedback='Looks good!'
-                />
-              </FormGroup>
+            <div className='col-4'>
+            <FormGroup id='phone' label='Course Name'>
+											<Input
+												type='tel'
+												placeholder=' Enter Course Name'
+												autoComplete='tel'
+												onChange={formik.handleChange}
+												onBlur={formik.handleBlur}
+												value={formik.values.phone}
+												isValid={formik.isValid}
+												isTouched={formik.touched.phone}
+												invalidFeedback={formik.errors.phone}
+												validFeedback='Looks good!'
+											/>
+										</FormGroup>
             </div>
+           
+            <div className='col-4'>
+													<FormGroup
+														id='exampleSelectOneWay'
+														label='Please select'
+														className='col-12'>
+														<Select
+                           
+															ariaLabel='Default select example'
+															placeholder='Open this select menu'
+															onChange={formikOneWay.handleChange}
+															value={
+																formikOneWay.values
+																	.exampleSelectOneWay
+															}
+															list={SELECT_OPTIONS}
+														/>
+													</FormGroup>
+													
+						</div>
+
+            
+            <div className='col-4'>
+              <FormGroup formText='Image should be in WEBP or PNG or JPEG'
+              label='Please select'>
+            <Input type='file' autoComplete='photo' ></Input>
+            </FormGroup>
+            </div>
+           
+          </div>
+          <div className='d-flex gap-3 align-itms-center justify-content-center mt-3'>
+         
+                      <Button
+										icon='PublishedWithChanges'
+										color='success'
+										isLight
+										className=''>
+										Save
+									</Button>
+                      <Button
+										icon='Cancel'
+										color='danger'
+										isLight
+										className=''>
+										Cancel
+									</Button>
           </div>
         </CardBody>
       </Card>
 
-    </>
+      <Card>
+      <div className='d-flex justify-content-between mx-4 mb-1 mt-4'>
+      <h4 className='fw-semibold m-0'>Language</h4>
+      <div>
+      <Button
+										icon='ControlPoint'
+										color='success'
+										isLight
+										className=''>
+										Create
+									</Button>
+      </div>
+      </div>
+      <CardBody className='table-responsive' >
+      <table className='table table-modern table-hover'>
+							<thead>
+								<tr>
+									<th scope='col'> Col-1</th>
+							
+									<th scope='col'>Image</th>
+									<th scope='col'>Name</th>
+									<th scope='col'>Sales</th>
+									<th scope='col'>Store</th>
+									<th scope='col'>
+										Actions
+									</th>
+								</tr>
+							</thead>
+							<tbody>
+              <tr>
+												<th scope='row'>1</th>
+												<td>Mark</td>
+												<td>Otto</td>
+                        <td>Otto</td>
+                        <td>Otto</td>
+
+
+												<td>@mdo</td>
+											</tr>
+                      <tr>
+												<th scope='row'>1</th>
+												<td>Mark</td>
+												<td>Otto</td>
+                        <td>Otto</td>
+                        <td>Otto</td>
+
+
+												<td>@mdo</td>
+											</tr>
+                      <tr>
+												<th scope='row'>1</th>
+												<td>Mark</td>
+												<td>Otto</td>
+                        <td>Otto</td>
+                        <td>Otto</td>
+
+
+												<td>@mdo</td>
+											</tr>
+                      <tr>
+												<th scope='row'>1</th>
+												<td>Mark</td>
+												<td>Otto</td>
+                        <td>Otto</td>
+                        <td>Otto</td>
+
+
+												<td>@mdo</td>
+											</tr>
+							 
+							</tbody>
+						</table>
+					</CardBody>
+      </Card>
+
+    </PageWrapper>
   )
 }
 
