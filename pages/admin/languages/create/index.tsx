@@ -308,9 +308,8 @@ function index() {
 												<td>Otto</td>
                         <td>Otto</td>
                         <td>Otto</td>
+                        <td>  <Button	color='dark' isLight icon='Edit' tag='a'/></td>
 
-
-												<td>@mdo</td>
 											</tr>
                       <tr>
 												<th scope='row'>1</th>
@@ -320,7 +319,7 @@ function index() {
                         <td>Otto</td>
 
 
-												<td>@mdo</td>
+                        <td className='d-flex gap-2 text-end'> <Button	color='danger' isLight icon='delete' tag='a'/> <Button	color='info' isLight icon='Edit' tag='a'/></td>
 											</tr>
                       <tr>
 												<th scope='row'>1</th>
@@ -330,17 +329,18 @@ function index() {
                         <td>Otto</td>
 
 
-												<td>@mdo</td>
-											</tr>
+                        <td>  <Button	color='dark' isLight icon='Edit' tag='a'/></td>
+                        </tr>
                       <tr>
 												<th scope='row'>1</th>
-												<td>Mark</td>
+                       
 												<td>Otto</td>
                         <td>Otto</td>
                         <td>Otto</td>
+                        <td>Otto</td>
 
 
-												<td>@mdo</td>
+                      <td>  <Button	color='dark' isLight icon='Edit' tag='a'/></td>
 											</tr>
 							 
 							</tbody>
