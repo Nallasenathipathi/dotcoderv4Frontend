@@ -1,5 +1,6 @@
 import React from 'react';
 import '../styles/styles.scss';
+import '../styles/custom/qb.css'
 import type { AppProps } from 'next/app';
 import { ThemeProvider } from 'react-jss';
 import { ToastContainer } from 'react-toastify';

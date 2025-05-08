@@ -15,12 +15,15 @@
 // crud operation
 
 [theme='dark'] .form-floating > .form-control:focus ~ label::after,
-[theme='dark'] .crud > .form-control:not(:placeholder-shown) ~ label::after,
-.form-floating > .form-control-plaintext ~ label::after,
+[theme='dark'] .crud > .form-control:not(:placeholder-shown) ~ label::after, [theme='dark']
+.form-floating >  .form-control-plaintext ~ label::after, [theme='dark']
 .form-floating > .form-select ~ label::after {
 	background-color: #212529;
 }
 
+.form-floating > .form-control:not(:placeholder-shown) ~ label::after{
+	opacity: 0;
+}
 
 
 // active_course
