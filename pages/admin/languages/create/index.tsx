@@ -45,14 +45,11 @@ const Index: React.FC = () => {
 				errors.lang_image = 'Language image is required';
 			}
 			if (!values.lang_category) {
-				console.log("no lang");
 				errors.lang_category = 'Language category is required';
-			} else {
-				console.log("yes lang");
-
-				console.log(values.lang_category);
-
 			}
+
+			console.log(values);
+			
 
 			return errors;
 		},
@@ -200,7 +197,6 @@ const Index: React.FC = () => {
 									onChange={formik.handleChange}
 									value={formik.values.lang_category}
 									onBlur={formik.handleBlur}
-									defaultValue = {formik.values.lang_category}
 									list={SELECT_OPTIONS}
 									isValid={formik.isValid}
 									isTouched={formik.touched.lang_category}
@@ -229,7 +225,7 @@ const Index: React.FC = () => {
 				</CardBody>
 			</Card>
 
-			<Card>
+			{/* <Card>
 				<div className='d-flex justify-content-between mx-4 mb-1 mt-4'>
 					<h4 className='fw-semibold m-0'>Language</h4>
 					<div>
@@ -306,7 +302,7 @@ const Index: React.FC = () => {
 						</tbody>
 					</table>
 				</CardBody>
-			</Card>
+			</Card> */}
 		</PageWrapper>
 	);
 };
