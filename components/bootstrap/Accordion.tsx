@@ -19,7 +19,7 @@ type TActiveItemId = string | number | boolean | null;
 interface IAccordionItemProps {
 	id: string | number;
 	icon?: TIcons;
-	title: string;
+	title: any;
 	children: ReactNode;
 	tag?: ElementType;
 	headerTag?: ElementType;

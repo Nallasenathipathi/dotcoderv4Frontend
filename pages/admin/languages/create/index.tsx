@@ -17,29 +17,47 @@ const Index: React.FC = () => {
 		{ value: 5, text: 'Five' },
 		{ value: 6, text: 'Six' },
 	];
-	const formikOneWay = useFormik({
-		initialValues: {
-			exampleSelectOneWay: '',
-		},
-		onSubmit: (values) => {
-			alert(JSON.stringify(values, null, 2));
-		},
-	});
+	// const formikOneWay = useFormik({
+	// 	initialValues: {
+	// 		lang_category: 'initialValues',
+	// 	},
+	// 	onSubmit: (values) => {
+	// 		alert(JSON.stringify(values, null, 2));
+	// 	},
+	// });
 	const formik = useFormik({
 		initialValues: {
-			firstName: '',
-			lastName: '',
-			displayName: 'johndoe',
-			emailAddress: 'johndoe@site.com',
-			phone: '',
-			currentPassword: '',
-			newPassword: '',
-			confirmPassword: '',
-			checkOne: true,
-			checkTwo: false,
-			checkThree: true,
+			lang_name: '',
+			lang_id: '',
+			lang_image: '',
+			lang_category: '',
+		},
+		validate: (values,) => {
+			const errors: any = {};
+
+			if (!values.lang_name) {
+				errors.lang_name = 'Language name is required';
+			}
+			if (!values.lang_id) {
+				errors.lang_id = 'Language ID is required';
+			}
+			if (!values.lang_image) {
+				errors.lang_image = 'Language image is required';
+			}
+			if (!values.lang_category) {
+				console.log("no lang");
+				errors.lang_category = 'Language category is required';
+			} else {
+				console.log("yes lang");
+
+				console.log(values.lang_category);
+
+			}
+
+			return errors;
 		},
 		onSubmit: () => {
+			console.log(formik.values.lang_name);
 			// setIsLoading(true);
 			// setTimeout(handleSave, 2000);
 		},
@@ -56,7 +74,7 @@ const Index: React.FC = () => {
 				</div>
 			</div>
 
-			<Card>
+			{/* <Card>
 				<CardBody>
 					<h4 className='fw-semibold mb-3'>Add Content</h4>
 					<div className='row g-4'>
@@ -139,80 +157,63 @@ const Index: React.FC = () => {
 						</Button>
 					</div>
 				</CardBody>
-			</Card>
+			</Card> */}
 
 			<Card>
 				<CardBody>
-					<h4 className='fw-semibold mb-3'>Add Content</h4>
+					{/* <h4 className='fw-semibold mb-3'>Add Content</h4> */}
 					<div className='row g-4'>
 						<div className='col-md-4'>
-							<FormGroup id='firstName' label='First Name'>
+							<FormGroup id='lang_name' label='Language name' isFloating>
 								<Input
-									className='py-3'
-									placeholder='First Name'
-									autoComplete='additional-name'
+									placeholder='Language name'
 									onChange={formik.handleChange}
 									onBlur={formik.handleBlur}
-									value={formik.values.firstName}
+									value={formik.values.lang_name}
 									isValid={formik.isValid}
-									isTouched={formik.touched.firstName}
-									invalidFeedback={formik.errors.firstName}
-									validFeedback='Looks good!'
+									isTouched={formik.touched.lang_name}
+									invalidFeedback={formik.errors.lang_name}
 								/>
 							</FormGroup>
 						</div>
 						<div className='col-4'>
-							<FormGroup id='phone' label='Language Id'>
+							<FormGroup id='lang_id' label='Language Id' isFloating>
 								<Input
-									className='py-3'
-									type='tel'
+									type='number'
 									placeholder='Language Id'
-									autoComplete='tel'
 									onChange={formik.handleChange}
 									onBlur={formik.handleBlur}
-									value={formik.values.phone}
+									value={formik.values.lang_id}
 									isValid={formik.isValid}
-									isTouched={formik.touched.phone}
-									invalidFeedback={formik.errors.phone}
-									validFeedback='Looks good!'
-								/>
-							</FormGroup>
-						</div>
-						<div className='col-4'>
-							<FormGroup id='phone' label='Course Name'>
-								<Input
-									type='tel'
-									className='py-3'
-									placeholder=' Enter Course Name'
-									autoComplete='tel'
-									onChange={formik.handleChange}
-									onBlur={formik.handleBlur}
-									value={formik.values.phone}
-									isValid={formik.isValid}
-									isTouched={formik.touched.phone}
-									invalidFeedback={formik.errors.phone}
-									validFeedback='Looks good!'
+									isTouched={formik.touched.lang_id}
+									invalidFeedback={formik.errors.lang_id}
+								// validFeedback='Looks good!'
 								/>
 							</FormGroup>
 						</div>
 
 						<div className='col-4'>
-							<FormGroup id='exampleSelectOneWay' label='Please select'>
+							<FormGroup id='lang_category' label='Language category' isFloating>
 								<Select
-									className='py-3'
 									ariaLabel='Default select example'
 									placeholder='Open this select menu'
-									onChange={formikOneWay.handleChange}
-									value={formikOneWay.values.exampleSelectOneWay}
+									onChange={formik.handleChange}
+									value={formik.values.lang_category}
+									onBlur={formik.handleBlur}
+									defaultValue = {formik.values.lang_category}
 									list={SELECT_OPTIONS}
+									isValid={formik.isValid}
+									isTouched={formik.touched.lang_category}
+									invalidFeedback={formik.errors.lang_category}
 								/>
 							</FormGroup>
 						</div>
 
 						<div className='col-4'>
 							<FormGroup
+								isFloating
 								formText='Image should be in WEBP or PNG or JPEG'
-								label='Please select'>
+								label='Upload the image'>
 								<Input type='file' autoComplete='photo' />
 							</FormGroup>
 						</div>

@@ -2,12 +2,17 @@ import React from 'react';
 import classNames from 'classnames';
 import Accordion, { AccordionItem } from '../../../components/bootstrap/Accordion';
 import PageWrapper from '../../../layout/PageWrapper/PageWrapper';
-import Card, { CardActions, CardBody, CardHeader, CardLabel, CardTitle } from '../../../components/bootstrap/Card';
+import Card, {
+	CardActions,
+	CardBody,
+	CardHeader,
+	CardLabel,
+} from '../../../components/bootstrap/Card';
 import useDarkMode from '../../../hooks/useDarkMode';
 import Nav, { NavItem } from '../../../components/bootstrap/Nav';
 import Link from 'next/link';
 
-const my_accordian = () => {
+const My_accordian = () => {
 	const { darkModeStatus } = useDarkMode();
 
 	return (
@@ -34,12 +39,12 @@ const my_accordian = () => {
 												x='4'
 												y='3'
 												fill='#46bcaa'
-												fill-opacity='.25'
+												// fill-opacity='.25'
 												rx='2'
 											/>
 											<path
 												stroke='#46bcaa'
-												stroke-linecap='round'
+												// stroke-linecap='round'
 												d='M8.5 6.5h7m-7 3h4m-4 3h6'
 											/>
 											<path
@@ -75,9 +80,7 @@ const my_accordian = () => {
 							className='rounded-top-0 topic_course'
 							shadow='default'>
 							<AccordionItem
-								className='course_topic'
 								overWriteColor='success'
-								color='primary'
 								id='accor1-1'
 								title={
 									<div>
@@ -126,7 +129,6 @@ const my_accordian = () => {
 										</div>
 									</div>
 									<div className='list'>
-									
 										<h5 style={{ fontSize: '15px', fontWeight: '600' }}>
 											Variables and Datatypes
 										</h5>
@@ -149,9 +151,7 @@ const my_accordian = () => {
 								</div>
 							</AccordionItem>
 							<AccordionItem
-								className='course_topic'
 								overWriteColor='success'
-								color='primary'
 								id='accor1-2'
 								title={
 									<div>
@@ -222,9 +222,7 @@ const my_accordian = () => {
 								</div>
 							</AccordionItem>
 							<AccordionItem
-								className='course_topic '
 								overWriteColor='success'
-								color='primary'
 								id='accor1-3'
 								title={
 									<div>
@@ -302,61 +300,178 @@ const my_accordian = () => {
 								</div>
 							</AccordionItem>
 						</Accordion>
-						<div className='col'></div>
 					</div>
 					<div className='col-lg-8'>
-					<Card className='ac_main'>
+						<Card className='ac_main'>
 							<CardHeader borderSize={1}>
-								<CardLabel  iconColor='info'>
-								<div className='d-flex  gap-2 align-items-center'>
-									<div  style={{backgroundColor:'#e6e6e6',borderRadius:'5px',padding:'2px'}}>
-									<svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24"><path fill="#46bcaa" d="M14.71 15.88L10.83 12l3.88-3.88a.996.996 0 1 0-1.41-1.41L8.71 11.3a.996.996 0 0 0 0 1.41l4.59 4.59c.39.39 1.02.39 1.41 0c.38-.39.39-1.03 0-1.42"/></svg>
+								<CardLabel iconColor='info'>
+									<div className='d-flex  gap-2 align-items-center'>
+										<div
+											style={{
+												backgroundColor: '#e6e6e6',
+												borderRadius: '5px',
+												padding: '2px',
+											}}>
+											<svg
+												xmlns='http://www.w3.org/2000/svg'
+												width='22'
+												height='22'
+												viewBox='0 0 24 24'>
+												<path
+													fill='#46bcaa'
+													d='M14.71 15.88L10.83 12l3.88-3.88a.996.996 0 1 0-1.41-1.41L8.71 11.3a.996.996 0 0 0 0 1.41l4.59 4.59c.39.39 1.02.39 1.41 0c.38-.39.39-1.03 0-1.42'
+												/>
+											</svg>
+										</div>
+										<div
+											className=''
+											style={{
+												border: '1px solid #e6e6e6',
+												borderRadius: '5px',
+												padding: '2px',
+											}}>
+											<svg
+												xmlns='http://www.w3.org/2000/svg'
+												width='18'
+												height='18'
+												viewBox='0 0 24 24'>
+												<g fill='none'>
+													<path d='m12.593 23.258l-.011.002l-.071.035l-.02.004l-.014-.004l-.071-.035q-.016-.005-.024.005l-.004.01l-.017.428l.005.02l.01.013l.104.074l.015.004l.012-.004l.104-.074l.012-.016l.004-.017l-.017-.427q-.004-.016-.017-.018m.265-.113l-.013.002l-.185.093l-.01.01l-.003.011l.018.43l.005.012l.008.007l.201.093q.019.005.029-.008l.004-.014l-.034-.614q-.005-.018-.02-.022m-.715.002a.02.02 0 0 0-.027.006l-.006.014l-.034.614q.001.018.017.024l.015-.002l.201-.093l.01-.008l.004-.011l.017-.43l-.003-.012l-.01-.01z' />
+													<path
+														fill='#46bcaa'
+														d='M10.8 2.65a2 2 0 0 1 2.4 0l7 5.25a2 2 0 0 1 .8 1.6V19a2 2 0 0 1-2 2h-4.9a1.1 1.1 0 0 1-1.1-1.1V14a1 1 0 1 0-2 0v5.9A1.1 1.1 0 0 1 9.9 21H5a2 2 0 0 1-2-2V9.5a2 2 0 0 1 .8-1.6zm1.2 1.6L5 9.5V19h4v-5a3 3 0 1 1 6 0v5h4V9.5z'
+													/>
+												</g>
+											</svg>
+										</div>
+										<div>
+											<svg
+												xmlns='http://www.w3.org/2000/svg'
+												width='18'
+												height='18'
+												viewBox='0 0 24 24'>
+												<path
+													fill='#ccc'
+													d='M9.29 15.88L13.17 12L9.29 8.12a.996.996 0 1 1 1.41-1.41l4.59 4.59c.39.39.39 1.02 0 1.41L10.7 17.3a.996.996 0 0 1-1.41 0c-.38-.39-.39-1.03 0-1.42'
+												/>
+											</svg>
+										</div>
+										<div>
+											<p className='m-0 text-success'>Prepare</p>
+										</div>
 									</div>
-									<div className='' style={{border:'1px solid #e6e6e6',borderRadius:'5px',padding:'2px'}}>
-									<svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24"><g fill="none" fill-rule="evenodd"><path d="m12.593 23.258l-.011.002l-.071.035l-.02.004l-.014-.004l-.071-.035q-.016-.005-.024.005l-.004.01l-.017.428l.005.02l.01.013l.104.074l.015.004l.012-.004l.104-.074l.012-.016l.004-.017l-.017-.427q-.004-.016-.017-.018m.265-.113l-.013.002l-.185.093l-.01.01l-.003.011l.018.43l.005.012l.008.007l.201.093q.019.005.029-.008l.004-.014l-.034-.614q-.005-.018-.02-.022m-.715.002a.02.02 0 0 0-.027.006l-.006.014l-.034.614q.001.018.017.024l.015-.002l.201-.093l.01-.008l.004-.011l.017-.43l-.003-.012l-.01-.01z"/><path fill="#46bcaa" d="M10.8 2.65a2 2 0 0 1 2.4 0l7 5.25a2 2 0 0 1 .8 1.6V19a2 2 0 0 1-2 2h-4.9a1.1 1.1 0 0 1-1.1-1.1V14a1 1 0 1 0-2 0v5.9A1.1 1.1 0 0 1 9.9 21H5a2 2 0 0 1-2-2V9.5a2 2 0 0 1 .8-1.6zm1.2 1.6L5 9.5V19h4v-5a3 3 0 1 1 6 0v5h4V9.5z"/></g></svg>
-									</div>
-									<div>
-									<svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24"><path fill="#ccc" d="M9.29 15.88L13.17 12L9.29 8.12a.996.996 0 1 1 1.41-1.41l4.59 4.59c.39.39.39 1.02 0 1.41L10.7 17.3a.996.996 0 0 1-1.41 0c-.38-.39-.39-1.03 0-1.42"/></svg>
-									</div>
-									<div>
-										<p className='m-0 text-success'>Prepare</p>
-									</div>
-								</div>
-
-
 								</CardLabel>
 								<CardActions>
-								<Nav design='tabs'>
-											<NavItem >
-												<a href='#' className="active">
-													Dashboard
-												</a>
-											</NavItem>
-											<NavItem>
-												<Link href='/components/modal'>Prepare</Link>
-											</NavItem>
-											<NavItem>
-												<a href='#'>
-													Challenge Yourself
-												</a>
-											</NavItem>
-											<NavItem>
-												<a href='#'>
-													Revision
-												</a>
-											</NavItem>
-											
-											<NavItem>
-											   <a href='#'>
-													Discussion
-												</a>
-											</NavItem>
-										</Nav>
+									<Nav design='tabs'>
+										<NavItem>
+											<a href='#' className='active'>
+												Dashboard
+											</a>
+										</NavItem>
+										<NavItem>
+											<Link href='/components/modal'>Prepare</Link>
+										</NavItem>
+										<NavItem>
+											<a href='#'>Challenge Yourself</a>
+										</NavItem>
+										<NavItem>
+											<a href='#'>Revision</a>
+										</NavItem>
+
+										<NavItem>
+											<a href='#'>Discussion</a>
+										</NavItem>
+									</Nav>
 								</CardActions>
 							</CardHeader>
 							<CardBody className='table-responsive card-body-scrollable ac_right_section'>
-							Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.
-							Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.
+								Lorem Ipsum is simply dummy text of the printing and typesetting
+								industry. Lorem Ipsum has been the industry's standard dummy text
+								ever since the 1500s, when an unknown printer took a galley of type
+								and scrambled it to make a type specimen book. It has survived not
+								only five centuries, but also the leap into electronic typesetting,
+								remaining essentially unchanged. It was popularised in the 1960s
+								with the release of Letraset sheets containing Lorem Ipsum passages,
+								and more recently with desktop publishing software like Aldus
+								PageMaker including versions of Lorem Ipsum.Lorem Ipsum is simply
+								dummy text of the printing and typesetting industry. Lorem Ipsum has
+								been the industry's standard dummy text ever since the 1500s, when
+								an unknown printer took a galley of type and scrambled it to make a
+								type specimen book. It has survived not only five centuries, but
+								also the leap into electronic typesetting, remaining essentially
+								unchanged. It was popularised in the 1960s with the release of
+								Letraset sheets containing Lorem Ipsum passages, and more recently
+								with desktop publishing software like Aldus PageMaker including
+								versions of Lorem Ipsum. Lorem Ipsum is simply dummy text of the
+								printing and typesetting industry. Lorem Ipsum has been the
+								industry's standard dummy text ever since the 1500s, when an unknown
+								printer took a galley of type and scrambled it to make a type
+								specimen book. It has survived not only five centuries, but also the
+								leap into electronic typesetting, remaining essentially unchanged.
+								It was popularised in the 1960s with the release of Letraset sheets
+								containing Lorem Ipsum passages, and more recently with desktop
+								publishing software like Aldus PageMaker including versions of Lorem
+								Ipsum.Lorem Ipsum is simply dummy text of the printing and
+								typesetting industry. Lorem Ipsum has been the industry's standard
+								dummy text ever since the 1500s, when an unknown printer took a
+								galley of type and scrambled it to make a type specimen book. It has
+								survived not only five centuries, but also the leap into electronic
+								typesetting, remaining essentially unchanged. It was popularised in
+								the 1960s with the release of Letraset sheets containing Lorem Ipsum
+								passages, and more recently with desktop publishing software like
+								Aldus PageMaker including versions of Lorem Ipsum.Lorem Ipsum is
+								simply dummy text of the printing and typesetting industry. Lorem
+								Ipsum has been the industry's standard dummy text ever since the
+								1500s, when an unknown printer took a galley of type and scrambled
+								it to make a type specimen book. It has survived not only five
+								centuries, but also the leap into electronic typesetting, remaining
+								essentially unchanged. It was popularised in the 1960s with the
+								release of Letraset sheets containing Lorem Ipsum passages, and more
+								recently with desktop publishing software like Aldus PageMaker
+								including versions of Lorem Ipsum.Lorem Ipsum is simply dummy text
+								of the printing and typesetting industry. Lorem Ipsum has been the
+								industry's standard dummy text ever since the 1500s, when an unknown
+								printer took a galley of type and scrambled it to make a type
+								specimen book. It has survived not only five centuries, but also the
+								leap into electronic typesetting, remaining essentially unchanged.
+								It was popularised in the 1960s with the release of Letraset sheets
+								containing Lorem Ipsum passages, and more recently with desktop
+								publishing software like Aldus PageMaker including versions of Lorem
+								Ipsum.Lorem Ipsum is simply dummy text of the printing and
+								typesetting industry. Lorem Ipsum has been the industry's standard
+								dummy text ever since the 1500s, when an unknown printer took a
+								galley of type and scrambled it to make a type specimen book. It has
+								survived not only five centuries, but also the leap into electronic
+								typesetting, remaining essentially unchanged. It was popularised in
+								the 1960s with the release of Letraset sheets containing Lorem Ipsum
+								passages, and more recently with desktop publishing software like
+								Aldus PageMaker including versions of Lorem Ipsum.Lorem Ipsum is
+								simply dummy text of the printing and typesetting industry. Lorem
+								Ipsum has been the industry's standard dummy text ever since the
+								1500s, when an unknown printer took a galley of type and scrambled
+								it to make a type specimen book. It has survived not only five
+								centuries, but also the leap into electronic typesetting, remaining
+								essentially unchanged. It was popularised in the 1960s with the
+								release of Letraset sheets containing Lorem Ipsum passages, and more
+								recently with desktop publishing software like Aldus PageMaker
+								including versions of Lorem Ipsum.Lorem Ipsum is simply dummy text
+								of the printing and typesetting industry. Lorem Ipsum has been the
+								industry's standard dummy text ever since the 1500s, when an unknown
+								printer took a galley of type and scrambled it to make a type
+								specimen book. It has survived not only five centuries, but also the
+								leap into electronic typesetting, remaining essentially unchanged.
+								It was popularised in the 1960s with the release of Letraset sheets
+								containing Lorem Ipsum passages, and more recently with desktop
+								publishing software like Aldus PageMaker including versions of Lorem
+								Ipsum.Lorem Ipsum is simply dummy text of the printing and
+								typesetting industry. Lorem Ipsum has been the industry's standard
+								dummy text ever since the 1500s, when an unknown printer took a
+								galley of type and scrambled it to make a type specimen book. It has
+								survived not only five centuries, but also the leap into electronic
+								typesetting, remaining essentially unchanged. It was popularised in
+								the 1960s with the release of Letraset sheets containing Lorem Ipsum
+								passages, and more recently with desktop publishing software like
+								Aldus PageMaker including versions of Lorem Ipsum.
 							</CardBody>
 						</Card>
 					</div>
@@ -365,4 +480,4 @@ const my_accordian = () => {
 		</PageWrapper>
 	);
 };
-export default my_accordian;
+export default My_accordian;
