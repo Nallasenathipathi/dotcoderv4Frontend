@@ -9,47 +9,43 @@ import Link from 'next/link';
 
 const Index: React.FC = () => {
 	const SELECT_OPTIONS = LanguageCategories;
-	console.log(SELECT_OPTIONS);
-
 	const endpoint = `${process.env.NEXT_PUBLIC_API_END_POINT}/languages`;
 	const [isLoading, setIsLoading] = useState<boolean>(true);
 	const [language_datas, setLanguage_datas] = useState<any[]>([]);
 
-	useEffect(() => {
-		const fetchData = async () => {
-			try {
-				const response = await axios.get(endpoint, {
-					headers: {
-						'Content-Type': 'multipart/form-data',
-					},
-				});
-
-				console.log(response.data.data);
-				if (response.data.status == 200) {
-					setLanguage_datas(response.data.data);
-				} else {
-					showNotification(
-						'Error in Fetching Languages',
-						'Error in Fetching Languages Please Try Again !',
-						'danger',
-					);
-				}
-				console.log('Upload success:', response.data);
-				setIsLoading(false);
-			} catch (error: any) {
-				console.error('Upload error:', error);
-				showNotification(
-					'Error in Fetching Languages',
-					'Error in Fetching Languages Please Try Again !',
-					'danger',
-				);
-				setIsLoading(false);
+	async function fetchData(): Promise<any> {
+		const response = await axios.get<any>(endpoint, {
+			headers: {
+				'Content-Type': 'multipart/form-data',
+			},
+		});
+		return response.data;
+	}
+	const fetchinitialData = async () => {
+		try {
+			const data = await fetchData();
+			if (data?.status === 200) {
+				setLanguage_datas(data.data);
+			} else {
+				showNotification('Error', 'Failed to fetch languages', 'danger');
 			}
-		};
+		} catch (error: any) {	
+			console.log('error:',error);
+			if (error?.status === 401) {
+				showNotification('Session Expired', 'Please login again', 'danger');
+			} else {
+				showNotification('Network Error', 'Could not connect to the server Please Try Again!', 'danger');
+			}
+		} finally {
+			setIsLoading(false);
+		}
+	};
 
-		fetchData();
-		// console.log('language_datas:', language_datas);
-	}, [endpoint]);
+	useEffect(() => {
+		fetchinitialData();
+	}, []);
+
+
 
 	return (
 		<PageWrapper>
@@ -82,7 +78,7 @@ const Index: React.FC = () => {
 								</tr>
 							</thead>
 							<tbody>
-								{!language_datas ? (
+								{language_datas.length <= 0 ? (
 									<tr>
 										<td>No Datas Found</td>
 									</tr>
