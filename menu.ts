@@ -32,12 +32,6 @@ export const demoPagesMenu = {
 		path: 'Problems/[...slug]',
 		icon: 'testpage',
 	},
-	newLogin: {
-		id: 'new-login',
-		text: 'new-login',
-		path: 'auth-pages/new-login',
-		icon: 'new-login',
-	},
 	page404: {
 		id: 'Page404',
 		text: '404 Page',
