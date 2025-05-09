@@ -8,7 +8,6 @@ const asides = [
 	{ path: demoPagesMenu.login.path, element: null, exact: true },
 	{ path: demoPagesMenu.signUp.path, element: null, exact: true },
 	{ path: demoPagesMenu.problems.path, element: null, exact: true },
-	{ path: demoPagesMenu.newLogin.path, element: null, exact: true },
 	{ path: pageLayoutTypesPagesMenu.blank.path, element: null, exact: true },
 	{ path: '/*', element: <DefaultAside />, exact: true },
 ];
