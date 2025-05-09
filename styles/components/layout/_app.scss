@@ -15,16 +15,15 @@
 // crud operation
 
 [theme='dark'] .form-floating > .form-control:focus ~ label::after,
-[theme='dark'] .crud > .form-control:not(:placeholder-shown) ~ label::after, [theme='dark']
-.form-floating >  .form-control-plaintext ~ label::after, [theme='dark']
-.form-floating > .form-select ~ label::after {
+[theme='dark'] .crud > .form-control:not(:placeholder-shown) ~ label::after,
+[theme='dark'] .form-floating > .form-control-plaintext ~ label::after,
+[theme='dark'] .form-floating > .form-select ~ label::after {
 	background-color: #212529;
 }
 
-.form-floating > .form-control:not(:placeholder-shown) ~ label::after{
+.form-floating > .form-control:not(:placeholder-shown) ~ label::after {
 	opacity: 0;
 }
-
 
 // active_course
 
@@ -39,23 +38,20 @@
 // 	}
 // }
 
-
-
-.topic_course .accordion-header{
+.topic_course .accordion-header {
 	border-top: 1.5px solid #ccc;
 }
 
-.topic_course .accordion-body{
+.topic_course .accordion-body {
 	padding: 0px;
 }
-
 
 .ac_card-body {
 	position: relative;
 	padding-left: 25px;
-  }
+}
 
-  .ac_card-body::before {
+.ac_card-body::before {
 	content: '';
 	position: absolute;
 	left: 19px;
@@ -63,15 +59,15 @@
 	bottom: 27px;
 	width: 2px;
 	background-color: #ececed;
-  }
+}
 
-  .ac_card-body .list {
+.ac_card-body .list {
 	position: relative;
 	padding-left: 10px;
 	padding-top: 20px;
-  }
+}
 
-  .ac_card-body .list::before {
+.ac_card-body .list::before {
 	content: '';
 	position: absolute;
 	left: -15px;
@@ -81,24 +77,21 @@
 	height: 20px;
 	border-radius: 50%;
 	background-color: #ececed;
-  }
+}
 
- 
-
-  .ac_card-body .list h4 {
+.ac_card-body .list h4 {
 	margin: 0;
 	font-size: 16px;
 	font-weight: bold;
-  }
+}
 
-  .ac_card-body .list p {
+.ac_card-body .list p {
 	margin: 5px 0 0;
 	color: #666;
 	font-size: 14px;
-  }
+}
 
-
-  .step-indicator {
+.step-indicator {
 	position: absolute;
 	left: -15px;
 	top: 50%;
@@ -110,50 +103,49 @@
 	display: flex;
 	align-items: center;
 	justify-content: center;
-  }
+}
 
-  .list.active .step-indicator {
+.list.active .step-indicator {
 	background-color: #46bcaa;
-  }
+}
 
-  .list .step-indicator svg {
+.list .step-indicator svg {
 	width: 12px;
 	height: 12px;
 	fill: #fff;
-  }
-  .ac_right_section{
+}
+.ac_right_section {
 	height: 72vh !important;
-  }
+}
 
-  .ac_main .card-actions{
-	background-color: #EDF8F7;
+.ac_main .card-actions {
+	background-color: #edf8f7;
 	padding-top: 14px;
 	padding-left: 17px;
 	padding-right: 17px;
 	padding-bottom: 0px;
-    border-radius: 20px;
-  }
+	border-radius: 20px;
+}
 
-  .ac_main .nav-tabs{
+.ac_main .nav-tabs {
 	border-bottom: 0;
 	display: flex;
-    gap: 5px;
-	
-  }
+	gap: 5px;
+}
 
-  .ac_main .nav-link{
+.ac_main .nav-link {
 	font-size: 13px;
-    font-weight: 500;
-    color: #46BCAA;
-  }
+	font-weight: 500;
+	color: #46bcaa;
+}
 
-  .ac_main .nav-tabs .nav-link:hover{
-    color: #fff;
-	background: #46BCAA;
-  }
-
-  .nav-tabs .nav-link.active ,
-  .nav-tabs .nav-link:focus{
+.ac_main .nav-tabs .nav-link:hover {
 	color: #fff;
-	background: #46BCAA;
-  }
+	background: #46bcaa;
+}
+
+.nav-tabs .nav-link.active,
+.nav-tabs .nav-link:focus {
+	color: #fff;
+	background: #46bcaa;
+}

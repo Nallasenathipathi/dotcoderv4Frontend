@@ -1,14 +1,14 @@
 .form-floating.csm_form .form-select {
-    padding-bottom: 2px !important;
+	padding-bottom: 2px !important;
 }
 
-.csm_label{
-    top: 3px;
-    font-size: 12px;
-    left: 14px;
-    font-weight: 500;
-    color: #323232a6;
-   }
-[theme='dark'] .csm_label{
-    color: #dee2e6a6;
+.csm_label {
+	top: 3px;
+	font-size: 12px;
+	left: 14px;
+	font-weight: 500;
+	color: #323232a6;
+}
+[theme='dark'] .csm_label {
+	color: #dee2e6a6;
 }
