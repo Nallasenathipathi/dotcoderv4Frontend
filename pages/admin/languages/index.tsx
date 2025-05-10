@@ -3,9 +3,10 @@ import Card, { CardBody } from '../../../components/bootstrap/Card';
 import PageWrapper from '../../../layout/PageWrapper/PageWrapper';
 import Button from '../../../components/bootstrap/Button';
 import LanguageCategories from '../../../common/data/commonDatas';
-import axios from 'axios';
 import showNotification from '../../../components/extras/showNotification';
 import Link from 'next/link';
+import { fetchData} from '../../../common/validations/validations';
+
 
 const Index: React.FC = () => {
 	const SELECT_OPTIONS = LanguageCategories;
@@ -13,24 +14,17 @@ const Index: React.FC = () => {
 	const [isLoading, setIsLoading] = useState<boolean>(true);
 	const [language_datas, setLanguage_datas] = useState<any[]>([]);
 
-	async function fetchData(): Promise<any> {
-		const response = await axios.get<any>(endpoint, {
-			headers: {
-				'Content-Type': 'multipart/form-data',
-			},
-		});
-		return response.data;
-	}
+	
 	const fetchinitialData = async () => {
 		try {
-			const data = await fetchData();
+			const data = await fetchData(endpoint);
 			if (data?.status === 200) {
 				setLanguage_datas(data.data);
 			} else {
 				showNotification('Error', 'Failed to fetch languages', 'danger');
 			}
-		} catch (error: any) {	
-			console.log('error:',error);
+		} catch (error: any) {
+			console.log('error:', error);
 			if (error?.status === 401) {
 				showNotification('Session Expired', 'Please login again', 'danger');
 			} else {
@@ -44,8 +38,6 @@ const Index: React.FC = () => {
 	useEffect(() => {
 		fetchinitialData();
 	}, []);
-
-
 
 	return (
 		<PageWrapper>
@@ -96,31 +88,15 @@ const Index: React.FC = () => {
 											<td>{item.created_by}</td>
 											<td>{item.updated_by}</td>
 											<td className='d-flex gap-2 justify-content-center'>
-												<Button color='info' isLight icon='Edit' tag='a' />
-												<Button
-													color='danger'
-													isLight
-													icon='delete'
-													tag='a'
-												/>
+												<Link href={`/admin/languages/update/${item.id}`}>
+													<Button color='info' isLight icon='Edit'/>
+												</Link>
+												<Link href={`/admin/languages/update/${item.id}`}>
+													<Button color='danger' isLight icon='delete'/>
+												</Link>
 											</td>
 										</tr>
 									))
-
-									// <tr>
-									// 	<th scope='row'>1</th>
-									// 	<td>Mark</td>
-									// 	<td>Otto</td>
-									// 	<td>Otto</td>
-									// 	<td>Otto</td>
-									// 	<td>Otto</td>
-									// 	<td className='d-flex gap-2 justify-content-center'>
-									// 		{/* {' '} */}
-									// 		<Button color='danger' isLight icon='delete' tag='a' />
-									// 		{/* {' '} */}
-									// 		<Button color='info' isLight icon='Edit' tag='a' />
-									// 	</td>
-									// </tr>
 								)}
 							</tbody>
 						</table>

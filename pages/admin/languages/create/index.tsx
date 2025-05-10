@@ -7,79 +7,15 @@ import PageWrapper from '../../../../layout/PageWrapper/PageWrapper';
 import Select from '../../../../components/bootstrap/forms/Select';
 import Button from '../../../../components/bootstrap/Button';
 import LanguageCategories from '../../../../common/data/commonDatas';
-import axios from 'axios';
 import showNotification from '../../../../components/extras/showNotification';
 import Link from 'next/link';
 import { useRouter } from 'next/router';
+import {Language_validation , submitLanguageData} from '../../../../common/validations/validations';
 
 const SELECT_OPTIONS = LanguageCategories;
 const endpoint = `${process.env.NEXT_PUBLIC_API_END_POINT}/languages`;
 
-async function submitLanguageData(values: any, endpoint: string): Promise<any> {
-	const formData = new FormData();
-	// Object.keys(values).forEach((key) => {
-	for (const key of Object.keys(values)) {
-		const value = values[key];
-		if (value !== null && value !== undefined) {
-			if (key === 'lang_image') {
-				const formData = new FormData();
-				formData.append('file', value);
-				formData.append('path', '/uploads/language_images');
-
-				const response = await fetch('/api/file_uploads', {
-					method: 'POST',
-					body: formData,
-				});
-
-				try {
-					const data = await response.json();
-					if (response.ok && data.path) {
-						formData.append(key, data.path); // e.g., '/uploads/abc.png'
-					} else {
-						console.error('Image upload failed', data);
-					}
-				} catch (error) {
-					
-				}
-
-				formData.append(key, 'langimg'); // handle image separately
-			} else {
-				formData.append(key, value);
-			}
-		}
-	};
-	// formData.forEach((value, key) => {
-	// 	console.log(`${key}:`, value);
-	// });
-
-	const response = await axios.post(endpoint, formData, {
-		headers: {
-			'Content-Type': 'multipart/form-data',
-		},
-	});
-	return response.data;
-}
-
-function validateDatas(values: any) {
-	const errors: any = {};
-
-	if (!values.lang_name) {
-		errors.lang_name = 'Language name is required';
-	}
-	if (!values.lang_id) {
-		errors.lang_id = 'Language ID is required';
-	}
-	if (!values.lang_category) {
-		errors.lang_category = 'Language category is required';
-	}
-	if (!values.lang_image) {
-		errors.lang_image = 'Language image is required';
-	}
-	return errors;
-}
-
 const Index: React.FC = () => {
-
 	const router = useRouter();
 	const [isLoading, setIsLoading] = useState<boolean>(false);
 
@@ -91,7 +27,7 @@ const Index: React.FC = () => {
 			lang_image: '',
 		},
 		validate: (values) => {
-			const errors = validateDatas(values);
+			const errors = Language_validation(values ,0);
 			return errors;
 		},
 		onSubmit: async () => {
@@ -99,7 +35,7 @@ const Index: React.FC = () => {
 			setIsLoading(true);
 			const values: any = formik.values;
 			try {
-				const data = await submitLanguageData(values, endpoint);
+				const data = await submitLanguageData(values, endpoint ,0);
 
 				if (data.status == 201) {
 					showNotification(
@@ -236,7 +172,7 @@ const Index: React.FC = () => {
 								isLight
 								className=''
 								onClick={formik.handleSubmit}
-								isDisable={!formik.isValid && !!formik.submitCount}>
+								isDisable={(!formik.isValid && !!formik.submitCount) || isLoading}>
 								{!isLoading ? <span>save</span> : <span>Storing Dats...</span>}
 							</Button>
 							<Link href='/admin/languages'>
