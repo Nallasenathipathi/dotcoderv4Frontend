@@ -34,6 +34,7 @@ const Index: React.FC = () => {
 			lang_name: '',
 			lang_id: '',
 			lang_category: '',
+			old_lang_img:'',
 			lang_image: '',
 		},
 		validate: (values) => {
@@ -57,6 +58,7 @@ const Index: React.FC = () => {
 					values.lang_name = '';
 					values.lang_id = '';
 					values.lang_category = '';
+					values.old_lang_img = '';
 					values.lang_image = '';
 					router.push('/admin/languages');
 				} else {
@@ -110,6 +112,7 @@ const Index: React.FC = () => {
 					lang_name: data.data.lang_name || '',
 					lang_id: data.data.lang_id || '',
 					lang_category: data.data.lang_category || '',
+					old_lang_img: data.data.lang_image || '',
 					lang_image: '',
 				});
 				lang_img_path = data.data.lang_image;

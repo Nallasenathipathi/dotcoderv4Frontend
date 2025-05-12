@@ -103,6 +103,8 @@ export async function submitLanguageData(values: any, endpoint: string ,type:num
 					);
 					return;
 				}
+			} else if(key === 'old_lang_img'){
+				formData.append('lang_image', value);
 			} else {
 				formData.append(key, value);
 			}
