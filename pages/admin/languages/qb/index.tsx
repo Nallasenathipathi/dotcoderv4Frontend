@@ -10,18 +10,12 @@ import Button from '../../../../components/bootstrap/Button';
 import { IServiceProps } from '../../../../common/data/serviceDummyData';
 // import useDarkMode from '../../../../hooks/useDarkMode';
 import classNames from 'classnames';
-const { themeStatus, darkModeStatus } = useDarkMode();
 const USER_APPOINTMENT: IUserAppointment = {
 	APPROVED: 'Approved',
 	PENDING: 'Pending',
 	CANCELED: 'Canceled',
 };
-const [activeUserAppointmentTab, setActiveUserAppointmentTab] = useState<
-		IUserAppointment['key']
-	>(USER_APPOINTMENT.APPROVED);
-const handleActiveUserAppointmentTab = (tabName: IUserAppointment['key']) => {
-	setActiveUserAppointmentTab(tabName);
-};
+
 interface ClassNames {
 	(...args: classNames.ArgumentArray): string;
 
@@ -178,6 +172,15 @@ interface IUserAppointment {
 }
 
 const Index: React.FC = () => {
+
+	const { themeStatus, darkModeStatus } = useDarkMode();
+	const [activeUserAppointmentTab, setActiveUserAppointmentTab] = useState<
+		IUserAppointment['key']
+	>(USER_APPOINTMENT.APPROVED);
+	const handleActiveUserAppointmentTab = (tabName: IUserAppointment['key']) => {
+		setActiveUserAppointmentTab(tabName);
+	};
+	
 	const SELECT_OPTIONS = [
 		{ value: 1, text: 'One' },
 		{ value: 2, text: 'Two' },
@@ -363,51 +366,51 @@ const Index: React.FC = () => {
 				<CardBody className='table-responsive'>quil</CardBody>
 			</Card>
 			<div
-					className={classNames('rounded-3', {
-						'shadow-3d-dark': !darkModeStatus,
-						'shadow-3d-light': darkModeStatus,
-						'bg-l10-dark': !darkModeStatus,
-						'bg-lo50-info': darkModeStatus,
-					})}>
-					<div className='row row-cols-3 g-3 pb-3 px-3 mt-0'>
-						{Object.keys(USER_APPOINTMENT).map((key) => (
-							<div
-								key={USER_APPOINTMENT[key]}
-								className='col d-flex flex-column align-items-center'>
-								<Button
-									color={
-										(darkModeStatus &&
-											activeUserAppointmentTab === USER_APPOINTMENT[key]) ||
+				className={classNames('rounded-3', {
+					'shadow-3d-dark': !darkModeStatus,
+					'shadow-3d-light': darkModeStatus,
+					'bg-l10-dark': !darkModeStatus,
+					'bg-lo50-info': darkModeStatus,
+				})}>
+				<div className='row row-cols-3 g-3 pb-3 px-3 mt-0'>
+					{Object.keys(USER_APPOINTMENT).map((key) => (
+						<div
+							key={USER_APPOINTMENT[key]}
+							className='col d-flex flex-column align-items-center'>
+							<Button
+								color={
+									(darkModeStatus &&
+										activeUserAppointmentTab === USER_APPOINTMENT[key]) ||
 										!darkModeStatus
-											? 'dark'
-											: undefined
+										? 'dark'
+										: undefined
+								}
+								className='w-100 text-capitalize'
+								rounded={1}
+								onClick={() =>
+									handleActiveUserAppointmentTab(USER_APPOINTMENT[key])
+								}
+								isLight={activeUserAppointmentTab !== USER_APPOINTMENT[key]}>
+								<div className='h6 mb-3 opacity-80'>
+									{USER_APPOINTMENT[key]}
+								</div>
+								<div
+									className={classNames('h2', {
+										'text-light': darkModeStatus,
+									})}>
+									{
+										dataJohnAppointments.filter(
+											(f) => f.status === USER_APPOINTMENT[key],
+										).length
 									}
-									className='w-100 text-capitalize'
-									rounded={1}
-									onClick={() =>
-										handleActiveUserAppointmentTab(USER_APPOINTMENT[key])
-									}
-									isLight={activeUserAppointmentTab !== USER_APPOINTMENT[key]}>
-									<div className='h6 mb-3 opacity-80'>
-										{USER_APPOINTMENT[key]}
-									</div>
-									<div
-										className={classNames('h2', {
-											'text-light': darkModeStatus,
-										})}>
-										{
-											dataJohnAppointments.filter(
-												(f) => f.status === USER_APPOINTMENT[key],
-											).length
-										}
-									</div>
-								</Button>
-							</div>
-						))}
-					</div>
+								</div>
+							</Button>
+						</div>
+					))}
 				</div>
+			</div>
 		</PageWrapper>
-		
+
 	);
 };
 
