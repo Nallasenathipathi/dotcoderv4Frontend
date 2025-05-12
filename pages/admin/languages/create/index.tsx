@@ -96,7 +96,7 @@ const Index: React.FC = () => {
 				<CardBody>
 					<form>
 						<div className='row g-4'>
-							<div className='col-3 col-md-4 col-sm-12'>
+							<div className='col-12 col-md-4 col-lg-3'>
 								<FormGroup id='lang_name' label='Language name' isFloating>
 									<Input
 										placeholder='Language name'
@@ -109,7 +109,7 @@ const Index: React.FC = () => {
 									/>
 								</FormGroup>
 							</div>
-							<div className='col-3 col-md-4 col-sm-12'>
+							<div className='col-12 col-md-4 col-lg-3'>
 								<FormGroup id='lang_id' label='Language Id' isFloating>
 									<Input
 										type='number'
@@ -125,7 +125,7 @@ const Index: React.FC = () => {
 								</FormGroup>
 							</div>
 
-							<div className='col-3 col-md-4 col-sm-12'>
+							<div className='col-12 col-md-4 col-lg-3'>
 								<FormGroup id='lang_category' label='Language category' isFloating>
 									<Select
 										ariaLabel='Default select example'
@@ -141,7 +141,7 @@ const Index: React.FC = () => {
 								</FormGroup>
 							</div>
 
-							<div className='col-3 col-md-4 col-sm-12'>
+							<div className='col-12 col-md-4 col-lg-3'>
 								<FormGroup
 									id='lang_image'
 									isFloating

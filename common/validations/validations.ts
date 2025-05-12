@@ -10,6 +10,15 @@ export async function fetchData(endpoint : any): Promise<any> {
 	return response.data;
 }
 
+export async function deleteData(endpoint : any): Promise<any> {
+	const response = await axios.delete<any>(`${endpoint}`, {
+		headers: {
+			'Content-Type': 'multipart/form-data',
+		},
+	});
+	return response.data;
+}
+
 export const Language_validation = (values:any ,type:number) => {
 	const errors: any = {};
 	if (!values.lang_name) {

@@ -5,7 +5,7 @@ import Button from '../../../components/bootstrap/Button';
 import LanguageCategories from '../../../common/data/commonDatas';
 import showNotification from '../../../components/extras/showNotification';
 import Link from 'next/link';
-import { fetchData} from '../../../common/validations/validations';
+import { fetchData ,deleteData } from '../../../common/validations/validations';
 
 
 const Index: React.FC = () => {
@@ -14,12 +14,32 @@ const Index: React.FC = () => {
 	const [isLoading, setIsLoading] = useState<boolean>(true);
 	const [language_datas, setLanguage_datas] = useState<any[]>([]);
 
-	
+	const deleteLanguage = async (delete_lang_id: number) => {
+		console.log('delete_lang_id:', delete_lang_id);
+		let deleteEndpoint = `${process.env.NEXT_PUBLIC_API_END_POINT}/languages/${delete_lang_id}`
+		try {
+			const data = await deleteData(deleteEndpoint);
+			if (data?.status === 200) {
+				showNotification('Deleted', 'Language Deleted Successfully !', 'success');
+			} else {
+				showNotification('Error', 'Failed to Delete languages', 'danger');
+			}
+		} catch (error: any) {
+			console.log('error:', error);
+			if (error?.status === 401) {
+				showNotification('Session Expired', 'Please login again', 'danger');
+			}else {
+				showNotification('Network Error', 'Could not connect to the server Please Try Again!', 'danger');
+			}
+		} 
+	}
+
 	const fetchinitialData = async () => {
 		try {
 			const data = await fetchData(endpoint);
 			if (data?.status === 200) {
 				setLanguage_datas(data.data);
+				fetchinitialData();
 			} else {
 				showNotification('Error', 'Failed to fetch languages', 'danger');
 			}
@@ -89,11 +109,11 @@ const Index: React.FC = () => {
 											<td>{item.updated_by}</td>
 											<td className='d-flex gap-2 justify-content-center'>
 												<Link href={`/admin/languages/update/${item.id}`}>
-													<Button color='info' isLight icon='Edit'/>
+													<Button color='info' isLight icon='Edit' />
 												</Link>
-												<Link href={`/admin/languages/update/${item.id}`}>
-													<Button color='danger' isLight icon='delete'/>
-												</Link>
+												<Button onClick={() => {
+													deleteLanguage(item.id)
+												}} color='danger' isLight icon='delete' />
 											</td>
 										</tr>
 									))
