@@ -43,7 +43,7 @@ const index = () => {
 					values.college_name = '';
 					values.college_short_name = '';
 					values.college_image = '';
-					router.push('/admin/colleges');
+					router.push('/admin/college');
 				} else {
 					showNotification(
 						'Error in Storing',

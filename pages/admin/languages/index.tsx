@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import Card, { CardBody } from '../../../components/bootstrap/Card';
 import PageWrapper from '../../../layout/PageWrapper/PageWrapper';
 import Button from '../../../components/bootstrap/Button';
-import LanguageCategories from '../../../common/data/commonDatas';
+import {LanguageCategories} from '../../../common/data/commonDatas';
 import showNotification from '../../../components/extras/showNotification';
 import Link from 'next/link';
 import { fetchData ,deleteData } from '../../../common/submissions/submissions';
@@ -21,6 +21,7 @@ const Index: React.FC = () => {
 			const data = await deleteData(deleteEndpoint);
 			if (data?.status === 200) {
 				showNotification('Deleted', 'Language Deleted Successfully !', 'success');
+                await fetchinitialData();
 			} else {
 				showNotification('Error', 'Failed to Delete languages', 'danger');
 			}
