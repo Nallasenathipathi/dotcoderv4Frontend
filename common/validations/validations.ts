@@ -157,5 +157,66 @@ export const Topic_validation = (values:any ,type:number) => {
 	return errors;
 };
 
+export const User_validation = (values: any, type: number, role: number) => {
+	const errors: any = {};
+	if (!values.name?.trim()) {
+		errors.name = 'Name is required';
+	}
+	if (!values.email) {
+		errors.email = 'Email is required';
+	} else {
+		if (!/^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/.test(values.email)) {
+			errors.email = 'Provide valid email address';
+		}
+	}
+	if (!values.password?.trim()) {
+		errors.password = 'Password is required';
+	}
+	if (values.dob?.trim()) {
+		if (!/^[0-9]{4}-[0-9]{2}-[0-9]{2}$/.test(values.dob))
+			errors.password = 'Provide valid date of birth';
+	}
+	if (values.contact_number?.trim()) {
+		if (!/^[9876]{1}[0-9]{9}$/.test(values.contact_number))
+			errors.contact_number = 'Provide valid contact number';
+	}
+	if (values.profile) {
+		if (type == 1) {
+			if (values.profile) {
+				const file = values.profile;
+				// File type validation
+				const allowedTypes = ['image/jpeg', 'image/png', 'image/jpg', 'image/webp'];
+				if (!allowedTypes.includes(file.type)) {
+					errors.profile = 'Only JPG, JPEG, PNG, or WEBP files are allowed';
+				}
+
+				// File size validation (example: 2MB max)
+				const maxSizeInBytes = 2 * 1024 * 1024; // 2MB
+				if (file.size > maxSizeInBytes) {
+					errors.profile = 'File size must be less than 2MB';
+				}
+			}
+		} else {
+			if (!values.profile) {
+				errors.profile = 'Profile is required';
+			} else {
+				const file = values.profile;
+
+				// File type validation
+				const allowedTypes = ['image/jpeg', 'image/png', 'image/jpg', 'image/webp'];
+				if (!allowedTypes.includes(file.type)) {
+					errors.profile = 'Only JPG, JPEG, PNG, or WEBP files are allowed';
+				}
+
+				// File size validation (example: 2MB max)
+				const maxSizeInBytes = 2 * 1024 * 1024; // 2MB
+				if (file.size > maxSizeInBytes) {
+					errors.profile = 'File size must be less than 2MB';
+				}
+			}
+		}
+	}
+	return errors;
+}
 
 
