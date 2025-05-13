@@ -2,27 +2,25 @@ import React, { useEffect, useState } from 'react';
 import Card, { CardBody } from '../../../components/bootstrap/Card';
 import PageWrapper from '../../../layout/PageWrapper/PageWrapper';
 import Button from '../../../components/bootstrap/Button';
-import LanguageCategories from '../../../common/data/commonDatas';
 import showNotification from '../../../components/extras/showNotification';
 import Link from 'next/link';
 import { fetchData ,deleteData } from '../../../common/submissions/submissions';
 
 
 const Index: React.FC = () => {
-	const SELECT_OPTIONS = LanguageCategories;
-	const endpoint = `${process.env.NEXT_PUBLIC_API_END_POINT}/languages`;
+	const endpoint = `${process.env.NEXT_PUBLIC_API_END_POINT}/departments`;
 	const [isLoading, setIsLoading] = useState<boolean>(true);
-	const [language_datas, setLanguage_datas] = useState<any[]>([]);
+	const [departmentData, setDepartmentData] = useState<any[]>([]);
 
-	const deleteLanguage = async (delete_lang_id: number) => {
-		console.log('delete_lang_id:', delete_lang_id);
-		let deleteEndpoint = `${process.env.NEXT_PUBLIC_API_END_POINT}/languages/${delete_lang_id}`
+	const deleteDepartment = async (delete_dept_id: number) => {
+		console.log('delete_dept_id:', delete_dept_id);
+		let deleteEndpoint = `${process.env.NEXT_PUBLIC_API_END_POINT}/departments/${delete_dept_id}`
 		try {
 			const data = await deleteData(deleteEndpoint);
 			if (data?.status === 200) {
-				showNotification('Deleted', 'Language Deleted Successfully !', 'success');
+				showNotification('Deleted', 'Department Deleted Successfully !', 'success');
 			} else {
-				showNotification('Error', 'Failed to Delete languages', 'danger');
+				showNotification('Error', 'Failed to Delete department', 'danger');
 			}
 		} catch (error: any) {
 			console.log('error:', error);
@@ -38,9 +36,9 @@ const Index: React.FC = () => {
 		try {
 			const data = await fetchData(endpoint);
 			if (data?.status === 200) {
-				setLanguage_datas(data.data);
+				setDepartmentData(data.data);
 			} else {
-				showNotification('Error', 'Failed to fetch languages', 'danger');
+				showNotification('Error', 'Failed to fetch departments', 'danger');
 			}
 		} catch (error: any) {
 			console.log('error:', error);
@@ -61,9 +59,9 @@ const Index: React.FC = () => {
 	return (
 		<PageWrapper>
 			<div className='d-flex justify-content-between mx-3 mb-4 mt-2'>
-				<h4 className='fw-semibold m-0'>Languages</h4>
+				<h4 className='fw-semibold m-0'>Departments</h4>
 				<div>
-					<Link href='/admin/languages/create'>
+					<Link href='/admin/departments/create'>
 						<Button icon='ControlPoint' color='success' isLight className=''>
 							Create
 						</Button>
@@ -78,9 +76,8 @@ const Index: React.FC = () => {
 							<thead>
 								<tr>
 									<th scope='col'> SL.NO</th>
-									<th scope='col'>Language</th>
-									<th scope='col'>Language-Id</th>
-									<th scope='col'>Category</th>
+									<th scope='col'>Department Name</th>
+									<th scope='col'>Department Short Name</th>
 									<th scope='col'>Created By</th>
 									<th scope='col'>Updated By</th>
 									<th scope='col ' className='text-center'>
@@ -89,29 +86,24 @@ const Index: React.FC = () => {
 								</tr>
 							</thead>
 							<tbody>
-								{language_datas.length <= 0 ? (
+								{departmentData.length <= 0 ? (
 									<tr>
 										<td>No Datas Found</td>
 									</tr>
 								) : (
-									language_datas.map((item: any, index: any) => (
+									departmentData.map((item: any, index: any) => (
 										<tr key={item.id || index}>
 											<th scope='row'>{index + 1}</th>
-											<td>{item.lang_name}</td>
-											<td>{item.lang_id}</td>
-											<td>
-												{SELECT_OPTIONS.find(
-													(cat) => cat.value === item.lang_category,
-												)?.text || 'Unknown'}
-											</td>
+											<td>{item.department_name}</td>
+											<td>{item.department_short_name}</td>
 											<td>{item.created_by}</td>
 											<td>{item.updated_by}</td>
 											<td className='d-flex gap-2 justify-content-center'>
-												<Link href={`/admin/languages/update/${item.id}`}>
+												<Link href={`/admin/departments/update/${item.id}`}>
 													<Button color='info' isLight icon='Edit' />
 												</Link>
 												<Button onClick={() => {
-													deleteLanguage(item.id)
+													deleteDepartment(item.id)
 												}} color='danger' isLight icon='delete' />
 											</td>
 										</tr>

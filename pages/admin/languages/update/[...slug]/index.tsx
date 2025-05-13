@@ -10,7 +10,8 @@ import LanguageCategories from '../../../../../common/data/commonDatas';
 import showNotification from '../../../../../components/extras/showNotification';
 import Link from 'next/link';
 import { useRouter } from 'next/router';
-import { Language_validation, submitLanguageData, fetchData} from '../../../../../common/validations/validations';
+import { Language_validation} from '../../../../../common/validations/validations';
+import {submitLanguageData, fetchData} from '../../../../../common/submissions/submissions'
 
 const SELECT_OPTIONS = LanguageCategories;
 let endpoint = `${process.env.NEXT_PUBLIC_API_END_POINT}/languages/1`;

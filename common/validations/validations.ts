@@ -1,24 +1,3 @@
-import axios from "axios";
-import showNotification from "../../components/extras/showNotification";
-
-export async function fetchData(endpoint : any): Promise<any> {
-	const response = await axios.get<any>(`${endpoint}`, {
-		headers: {
-			'Content-Type': 'multipart/form-data',
-		},
-	});
-	return response.data;
-}
-
-export async function deleteData(endpoint : any): Promise<any> {
-	const response = await axios.delete<any>(`${endpoint}`, {
-		headers: {
-			'Content-Type': 'multipart/form-data',
-		},
-	});
-	return response.data;
-}
-
 export const Language_validation = (values:any ,type:number) => {
 	const errors: any = {};
 	if (!values.lang_name) {
@@ -67,62 +46,107 @@ export const Language_validation = (values:any ,type:number) => {
 	return errors;
 };
 
-
-export async function submitLanguageData(values: any, endpoint: string ,type:number): Promise<any> {
-	const formData = new FormData();
-	for (const key of Object.keys(values)) {
-		const value = values[key];
-		if (value !== null && value !== undefined && value !== '') {
-			if (key === 'lang_image') {
-				const imgformData = new FormData();
-				imgformData.append('file', value);
-				imgformData.append('path', '/uploads/language_images');
-				// imgformData.append('file_name', value.name);
-				const fileExtension = value.name.split('.').pop(); // gets the extension like 'jpg', 'png'
-				const newFileName = `${values.lang_id}.${fileExtension}`;
-				imgformData.append('file_name', newFileName);
-
-				try {
-					const response = await fetch('/api/file_uploads/', {
-						method: 'POST',
-						body: imgformData,
-					});
-					const data = await response.json();
-					if (data.path) {
-						let path = data.path;
-						formData.append(key, path);
-					} else {
-						console.error('Image upload failed', data);
-					}
-				} catch (error) {
-					console.log(error);
-					showNotification(
-						'Failed to store img',
-						'Failed to store img Please Try Again !',
-						'danger',
-					);
-					return;
-				}
-			} else if(key === 'old_lang_img'){
-				formData.append('lang_image', value);
-			} else {
-				formData.append(key, value);
+export const College_validation = (values:any ,type:number) => {
+	const errors: any = {};
+	if (!values.college_name?.trim()) {
+		errors.college_name = 'College name is required';
+	}
+	if (!values.college_short_name?.trim()) {
+		errors.college_short_name = 'College short name is required';
+	}
+	if(type == 1){
+		if (values.college_image) {
+			const file = values.college_image;
+			// File type validation
+			const allowedTypes = ['image/jpeg', 'image/png', 'image/jpg', 'image/webp'];
+			if (!allowedTypes.includes(file.type)) {
+				errors.college_image = 'Only JPG, JPEG, PNG, or WEBP files are allowed';
+			}
+		
+			// File size validation (example: 2MB max)
+			const maxSizeInBytes = 2 * 1024 * 1024; // 2MB
+			if (file.size > maxSizeInBytes) {
+				errors.college_image = 'File size must be less than 2MB';
 			}
 		}
-	};
-
-	// for put method
-	if(type == 1){
-		formData.append('_method', 'PUT');
+	}else{
+		if (!values.college_image) {
+			errors.college_image = 'College image is required';
+		}else {
+			const file = values.college_image;
+		
+			// File type validation
+			const allowedTypes = ['image/jpeg', 'image/png', 'image/jpg', 'image/webp'];
+			if (!allowedTypes.includes(file.type)) {
+				errors.college_image = 'Only JPG, JPEG, PNG, or WEBP files are allowed';
+			}
+		
+			// File size validation (example: 2MB max)
+			const maxSizeInBytes = 2 * 1024 * 1024; // 2MB
+			if (file.size > maxSizeInBytes) {
+				errors.college_image = 'File size must be less than 2MB';
+			}
+		}
 	}
-	// formData.forEach((value, key) => {
-	// 	console.log(`${key}:`, value);
-	// });
+	return errors;
+};
 
-	const response = await axios.post(endpoint, formData, {
-		headers: {
-			'Content-Type': 'multipart/form-data',
-		},
-	});
-	return response.data;
-}
+export const Department_validation = (values:any ,type:number) => {
+	const errors: any = {};
+	if (!values.department_name?.trim()) {
+		errors.department_name = 'Department name is required';
+	}
+	if (!values.department_short_name?.trim()) {
+		errors.department_short_name = 'Department short name is required';
+	}
+	return errors;
+};
+
+export const Batch_validation = (values:any ,type:number) => {
+	const errors: any = {};
+	if (!values.batch_name?.trim()) {
+		errors.batch_name = 'Batch name is required';
+	}
+	return errors;
+};
+
+export const Section_validation = (values:any ,type:number) => {
+	const errors: any = {};
+	if (!values.section_name?.trim()) {
+		errors.section_name = 'Section name is required';
+	}
+	return errors;
+};
+
+export const Tag_validation = (values:any ,type:number) => {
+	const errors: any = {};
+	if (!values.tag_name?.trim()) {
+		errors.tag_name = 'Tag name is required';
+	}
+	return errors;
+};
+
+export const Course_validation = (values:any ,type:number) => {
+	const errors: any = {};
+	if (!values.course_name?.trim()) {
+		errors.course_name = 'Course name is required';
+	}
+	return errors;
+};
+
+export const Topic_validation = (values:any ,type:number) => {
+	const errors: any = {};
+	if (!values.course_id) {
+		errors.course_id = 'Course ID is required';
+	}
+	if (!values.topic_tag_id) {
+		errors.topic_tag_id = 'Topic Tag ID is required';
+	}
+	if (!values.topic_name?.trim()) {
+		errors.topic_name = 'Topic name is required';
+	}
+	return errors;
+};
+
+
+
