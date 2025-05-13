@@ -37,6 +37,7 @@ const index = () => {
 			const data = await deleteData(deleteEndpoint);
 			if (data?.status === 200) {
 				showNotification('Deleted', 'College Deleted Successfully !', 'success');
+				await getData();
 			} else {
 				showNotification('Error', 'Failed to Delete colleges', 'danger');
 			}

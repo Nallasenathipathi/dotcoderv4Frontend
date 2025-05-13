@@ -50,7 +50,7 @@ const CommonForm = ({ isEdit,apiEndpoint,fieldName,validator,title,label }: Form
             try {
                 const data = await submitCommonData(values, endpoint, isEdit ? 1 : 0);
 
-                if (data.status == 201) {
+                if (data.status == 201 || data.status == 200) {
                     showNotification(
                         `${isEdit ? "Updated " : "Stored"} Successfully`,
                         `The ${title} have been successfully ${isEdit ? "Updated " : "Stored"}.`,

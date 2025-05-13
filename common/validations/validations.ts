@@ -110,6 +110,15 @@ export const Batch_validation = (values:any ,type:number) => {
 	return errors;
 };
 
+
+export const Compiler_validation = (values:any ,type:number) => {
+	const errors: any = {};
+	if (!values.api?.trim()) {
+        errors.api = 'Api name is required';
+	}
+	return errors;
+};
+
 export const Section_validation = (values:any ,type:number) => {
 	const errors: any = {};
 	if (!values.section_name?.trim()) {

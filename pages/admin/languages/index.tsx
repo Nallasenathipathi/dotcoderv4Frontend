@@ -21,6 +21,7 @@ const Index: React.FC = () => {
 			const data = await deleteData(deleteEndpoint);
 			if (data?.status === 200) {
 				showNotification('Deleted', 'Language Deleted Successfully !', 'success');
+                await fetchinitialData();
 			} else {
 				showNotification('Error', 'Failed to Delete languages', 'danger');
 			}
