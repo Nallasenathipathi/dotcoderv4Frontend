@@ -6,7 +6,8 @@ import Card, { CardBody } from '../../../components/bootstrap/Card';
 import FormGroup from '../../../components/bootstrap/forms/FormGroup';
 import Input from '../../../components/bootstrap/forms/Input';
 import Button from '../../../components/bootstrap/Button';
-
+import { useFormik } from 'formik';
+import { login_validations } from '../../../common/validations/validations';
 const index = () => {
 	const [amypologo, setAmypologo] = useState<string | null>(null);
 	const [carousel1, setcarousel1] = useState<string | null>(null);
@@ -46,6 +47,23 @@ const index = () => {
 
 		loadimages();
 	}, []);
+
+	const formik = useFormik({
+		initialValues: {
+			email: '',
+			password: '',
+		},
+
+		validate(values) {
+			// console.log('error called');
+			const errors = login_validations(values);
+			return errors;
+		},
+
+		onSubmit(values) {
+			console.log('submit');
+		},
+	});
 
 	return (
 		<PageWrapper isProtected={false} className='bg-light'>
@@ -159,14 +177,26 @@ const index = () => {
 										Please, Sign in to continue!
 									</div>
 
-									<form className='row g-4'>
+									<form className='row g-4' onSubmit={formik.onSubmit}>
 										<>
 											<div className='col-12'>
 												<FormGroup
 													id='loginUsername'
 													isFloating
 													label='Your email or username'>
-													<Input autoComplete='username' />
+													<Input
+														autoComplete='username'
+														name='email'
+														onChange={formik.handleChange}
+														onBlur={formik.handleBlur}
+														value={formik.values.email}
+													/>
+													{formik.touched.email &&
+														formik.errors.email && (
+															<div style={{ color: 'red' }}>
+																{formik.errors.email}
+															</div>
+														)}
 												</FormGroup>
 
 												<FormGroup
@@ -176,7 +206,17 @@ const index = () => {
 													<Input
 														type='password'
 														autoComplete='current-password'
+														name='password'
+														onChange={formik.handleChange}
+														onBlur={formik.handleBlur}
+														value={formik.values.password}
 													/>
+													{formik.touched.password &&
+														formik.errors.password && (
+															<div style={{ color: 'red' }}>
+																{formik.errors.password}
+															</div>
+														)}
 												</FormGroup>
 
 												<p className='text-end mt-1'>Forget Password ?</p>
