@@ -18,3 +18,12 @@ export const GenderCategories: Iprop[] = [
 	{ value: 3, text: 'Others' },
 ];
 
+
+export const RoleCategories: Iprop[] = [
+	{ value: 1, text: 'Admin' },
+	{ value: 2, text: 'Student' },
+	{ value: 3, text: 'Trainer' },
+	{ value: 4, text: 'Content' },
+	{ value: 5, text: 'College Admin' },
+	{ value: 6, text: 'Staff' },
+];
