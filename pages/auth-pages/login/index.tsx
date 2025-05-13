@@ -13,10 +13,10 @@ import showNotification from '../../../components/extras/showNotification';
 import axios from 'axios';
 
 const index = () => {
-	const [amypologo, setAmypologo] = useState<string | null>(null);
-	const [carousel1, setcarousel1] = useState<string | null>(null);
-	const [carousel2, setcarousel2] = useState<string | null>(null);
-	const [carousel3, setcarousel3] = useState<string | null>(null);
+	const [amypologo, setAmypologo] = useState<string>('');
+	const [carousel1, setcarousel1] = useState<string>('');
+	const [carousel2, setcarousel2] = useState<string>('');
+	const [carousel3, setcarousel3] = useState<string>('');
 	const endpoint = `${process.env.NEXT_PUBLIC_API_END_POINT}/login`;
 
 	useEffect(() => {
@@ -25,28 +25,28 @@ const index = () => {
 				const logo = await import('../../../assets/img/logo/amypo_trans_logo.png');
 				setAmypologo(logo.default);
 			} catch (error) {
-				setAmypologo(null);
+				setAmypologo('');
 			}
 
 			try {
 				const logo = await import('../../../assets/img/login_image/3d1.png');
 				setcarousel1(logo.default);
 			} catch (error) {
-				setcarousel1(null);
+				setcarousel1('');
 			}
 
 			try {
 				const logo = await import('../../../assets/img/login_image/3d2.png');
 				setcarousel2(logo.default);
 			} catch (error) {
-				setcarousel2(null);
+				setcarousel2('');
 			}
 
 			try {
 				const logo = await import('../../../assets/img/login_image/3d3.png');
 				setcarousel3(logo.default);
 			} catch (error) {
-				setcarousel3(null);
+				setcarousel3('');
 			}
 		};
 

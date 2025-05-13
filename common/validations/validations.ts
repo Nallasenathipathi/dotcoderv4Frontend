@@ -110,11 +110,10 @@ export const Batch_validation = (values: any, type: number) => {
 	return errors;
 };
 
-
-export const Compiler_validation = (values:any ,type:number) => {
+export const Compiler_validation = (values: any, type: number) => {
 	const errors: any = {};
 	if (!values.api?.trim()) {
-        errors.api = 'Api name is required';
+		errors.api = 'Api name is required';
 	}
 	return errors;
 };
@@ -217,11 +216,9 @@ export const User_validation = (values: any, type: number, role: number) => {
 		}
 	}
 	return errors;
-}
-
+};
 
 export const login_validations = (values: any) => {
-
 	const errors: any = {};
 
 	if (!values.email) {
