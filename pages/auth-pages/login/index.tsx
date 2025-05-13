@@ -209,13 +209,9 @@ const index = () => {
 														onChange={formik.handleChange}
 														onBlur={formik.handleBlur}
 														value={formik.values.email}
+														isTouched={formik.touched.email}
+														invalidFeedback={formik.errors.email}
 													/>
-													{formik.touched.email &&
-														formik.errors.email && (
-															<div style={{ color: 'red' }}>
-																{formik.errors.email}
-															</div>
-														)}
 												</FormGroup>
 
 												<FormGroup
@@ -229,13 +225,9 @@ const index = () => {
 														onChange={formik.handleChange}
 														onBlur={formik.handleBlur}
 														value={formik.values.password}
+														isTouched={formik.touched.password}
+														invalidFeedback={formik.errors.password}
 													/>
-													{formik.touched.password &&
-														formik.errors.password && (
-															<div style={{ color: 'red' }}>
-																{formik.errors.password}
-															</div>
-														)}
 												</FormGroup>
 
 												<p className='text-end mt-1'>Forget Password ?</p>
