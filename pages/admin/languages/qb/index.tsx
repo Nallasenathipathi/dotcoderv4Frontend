@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import Card, { CardBody } from '../../../../components/bootstrap/Card';
+import Card, { CardActions, CardBody, CardHeader, CardLabel, CardTitle } from '../../../../components/bootstrap/Card';
 import FormGroup from '../../../../components/bootstrap/forms/FormGroup';
 import Input from '../../../../components/bootstrap/forms/Input';
 import { useFormik } from 'formik';
@@ -216,19 +216,80 @@ const Index: React.FC = () => {
 			// setTimeout(handleSave, 2000);
 		},
 	});
+	type TListTab = {
+		name:string
+		icon:string
+	};
+
 	// const { darkModeStatus } = useDarkMode();
+	// const LIST_TAB: { [key: string]: TListTab } = {
+	// 	EMPLOYEES: 'Employees1',
+	// 	SERVICE: 'Services',
+	// 	PACKAGE: 'Packages',
+	// };
+	const LIST_TAB:TListTab[]=[
+		{
+			name:'Header',
+			icon: 'SportsVolleyball'
+		}
+		,{
+			name:'Body',
+			icon: 'Hiking'
+		},{
+			name:'Footer',
+			icon: 'SportsVolleyball'
+
+		}
+	]
+	const [activeListTab, setActiveListTab] = useState(LIST_TAB[0].name);
+	const handleActiveListTab = (tabName: string) => {
+		setActiveListTab(tabName);
+	};
+	const getStatusActiveListTabColor = (tabName: string): 'success' | 'light' => {
+		if (activeListTab === tabName) return 'success';
+		return 'light';
+	};
+
+
+
+	const LIST_TAB2:TListTab[]=[
+		{
+			name:'Visibe Testcase',
+			icon: 'SportsVolleyball'
+		}
+		,{
+			name:'Random Testcase',
+			icon: 'Hiking'
+		},{
+			name:'Special Testcase',
+			icon: 'SportsVolleyball'
+
+		}
+	]
+	const [activeListTab2, setActiveListTab2] = useState(LIST_TAB2[0].name);
+	const handleActiveListTab2 = (tabName: string) => {
+		setActiveListTab2(tabName);
+	};
+	const getStatusActiveListTabColor2 = (tabName: string): 'success' | 'light' => {
+		if (activeListTab2 === tabName) return 'success';
+		return 'light';
+	};
+
+	
 	return (
 		<PageWrapper>
 			<Card>
-				<CardBody>
-					<div className='d-flex justify-content-between mx-3 mb-4 mt-2'>
-						<h4 className='fw-semibold m-0'>Language</h4>
-						<div>
-							<Button icon='ControlPoint' color='success' isLight className=''>
+			<CardHeader>
+				<CardLabel>
+					<CardTitle>Language</CardTitle>
+				</CardLabel>
+				<CardActions>
+				<Button icon='ControlPoint' color='success' isLight className=''>
 								Create
 							</Button>
-						</div>
-					</div>
+				</CardActions>
+			</CardHeader>
+				<CardBody>	
 					<div className='row g-4'>
 						<div className='col-md-4'>
 							<FormGroup id='firstName' label='Question Title' isFloating>
@@ -360,55 +421,68 @@ const Index: React.FC = () => {
 			</Card>
 
 			<Card>
-				<div className='d-flex justify-content-between mx-4 mb-1 mt-4'>
-					<h4 className='fw-semibold m-0'>Quill Editor</h4>
-				</div>
+			<CardHeader>
+				<CardLabel>
+					<CardTitle>Quill</CardTitle>
+				</CardLabel>
+				
+			</CardHeader>
 				<CardBody className='table-responsive'>quil</CardBody>
 			</Card>
-			<div
-				className={classNames('rounded-3', {
-					'shadow-3d-dark': !darkModeStatus,
-					'shadow-3d-light': darkModeStatus,
-					'bg-l10-dark': !darkModeStatus,
-					'bg-lo50-info': darkModeStatus,
-				})}>
-				<div className='row row-cols-3 g-3 pb-3 px-3 mt-0'>
-					{Object.keys(USER_APPOINTMENT).map((key) => (
-						<div
-							key={USER_APPOINTMENT[key]}
-							className='col d-flex flex-column align-items-center'>
+			<Card>				
+			<CardHeader>
+				<CardLabel>
+					<CardTitle>Solution</CardTitle>
+				</CardLabel>
+				<CardActions>
+					<div className='bg-light p-2 rounded-3'>
+						{LIST_TAB.map((tab) => (
 							<Button
-								color={
-									(darkModeStatus &&
-										activeUserAppointmentTab === USER_APPOINTMENT[key]) ||
-										!darkModeStatus
-										? 'dark'
-										: undefined
-								}
-								className='w-100 text-capitalize'
-								rounded={1}
-								onClick={() =>
-									handleActiveUserAppointmentTab(USER_APPOINTMENT[key])
-								}
-								isLight={activeUserAppointmentTab !== USER_APPOINTMENT[key]}>
-								<div className='h6 mb-3 opacity-80'>
-									{USER_APPOINTMENT[key]}
-								</div>
-								<div
-									className={classNames('h2', {
-										'text-light': darkModeStatus,
-									})}>
-									{
-										dataJohnAppointments.filter(
-											(f) => f.status === USER_APPOINTMENT[key],
-										).length
-									}
-								</div>
+								key={tab.name}
+								icon={tab.icon}
+								
+								color={getStatusActiveListTabColor(tab.name)}
+								onClick={() => handleActiveListTab(tab.name)}>
+								{tab.name}
 							</Button>
-						</div>
-					))}
-				</div>
-			</div>
+						))}
+					</div>
+				</CardActions>
+			</CardHeader>
+			<CardBody className='table-responsive'>
+				{activeListTab === 'Header' && <div> tab1 </div> }
+				{activeListTab === 'Body' && <div> tab2 </div>}
+				{activeListTab === 'Footer' && <div> tab3 </div>}
+			</CardBody>
+			</Card>
+
+			<Card>				
+			<CardHeader>
+				<CardLabel>
+					<CardTitle>TestCase</CardTitle>
+				</CardLabel>
+				<CardActions>
+					<div className='bg-light p-2 rounded-3'>
+						{LIST_TAB2.map((tab) => (
+							<Button
+								key={tab.name}
+								icon={tab.icon}
+								
+								color={getStatusActiveListTabColor2(tab.name)}
+								onClick={() => handleActiveListTab2(tab.name)}>
+								{tab.name}
+							</Button>
+						))}
+					</div>
+				</CardActions>
+			</CardHeader>
+			<CardBody className='table-responsive'>
+				{activeListTab2 === 'Visibe Testcase' && <div> tab1 </div> }
+				{activeListTab2 === 'Random Testcase' && <div> tab2 </div>}
+				{activeListTab2 === 'Special Testcase' && <div> tab3 </div>}
+			</CardBody>
+			</Card>
+			
 		</PageWrapper>
 
 	);
