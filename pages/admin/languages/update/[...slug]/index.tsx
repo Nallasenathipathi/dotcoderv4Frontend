@@ -6,7 +6,7 @@ import { useFormik } from 'formik';
 import PageWrapper from '../../../../../layout/PageWrapper/PageWrapper';
 import Select from '../../../../../components/bootstrap/forms/Select';
 import Button from '../../../../../components/bootstrap/Button';
-import LanguageCategories from '../../../../../common/data/commonDatas';
+import {LanguageCategories} from '../../../../../common/data/commonDatas';
 import showNotification from '../../../../../components/extras/showNotification';
 import Link from 'next/link';
 import { useRouter } from 'next/router';

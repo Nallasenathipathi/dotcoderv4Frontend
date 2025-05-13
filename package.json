@@ -60,6 +60,7 @@
 		"@eslint/js": "^9.22.0",
 		"@next/eslint-plugin-next": "^15.2.3",
 		"@svgr/cli": "^8.1.0",
+		"@types/formidable": "^3.4.5",
 		"@types/node": "22.13.10",
 		"@types/pascalcase": "^1.0.3",
 		"@types/payment": "^2.1.7",
