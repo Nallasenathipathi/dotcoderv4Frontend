@@ -6,9 +6,10 @@ type Props = {
     onSetHeading: (tag: string) => void;
     onInsertImage: (file: File) => void;
     onInsertInlineTag: (tag: string) => void;
+    applyTextAlignment: (tag: string) => void;
 };
 
-const Toolbaar: React.FC<Props> = ({ onCommand, onSetHeading, onInsertImage, onInsertInlineTag }) => {
+const Toolbaar: React.FC<Props> = ({ onCommand, onSetHeading, onInsertImage, onInsertInlineTag ,applyTextAlignment}) => {
     const handleImageChange = (e: ChangeEvent<HTMLInputElement>) => {
         const file = e.target.files?.[0];
         if (file) onInsertImage(file);
@@ -34,10 +35,10 @@ const Toolbaar: React.FC<Props> = ({ onCommand, onSetHeading, onInsertImage, onI
             </select>
 
             {/* Alignment */}
-            <button className="btn btn-outline-dark btn-sm" onClick={() => onCommand('justifyLeft')}>Left</button>
-            <button className="btn btn-outline-dark btn-sm" onClick={() => onCommand('justifyCenter')}>Center</button>
-            <button className="btn btn-outline-dark btn-sm" onClick={() => onCommand('justifyRight')}>Right</button>
-            <button className="btn btn-outline-dark btn-sm" onClick={() => onCommand('justifyFull')}>Justify</button>
+            <button className="btn btn-outline-dark btn-sm" onClick={() => applyTextAlignment('justifyLeft')}>Left</button>
+            <button className="btn btn-outline-dark btn-sm" onClick={() => applyTextAlignment('justifyCenter')}>Center</button>
+            <button className="btn btn-outline-dark btn-sm" onClick={() => applyTextAlignment('justifyRight')}>Right</button>
+            <button className="btn btn-outline-dark btn-sm" onClick={() => applyTextAlignment('justifyFull')}>Justify</button>
 
             {/* Image Upload */}
             <label className="btn btn-outline-primary btn-sm mb-0">
