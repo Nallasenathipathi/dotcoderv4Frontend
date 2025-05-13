@@ -8,11 +8,16 @@ import Input from '../../../components/bootstrap/forms/Input';
 import Button from '../../../components/bootstrap/Button';
 import { useFormik } from 'formik';
 import { login_validations } from '../../../common/validations/validations';
+import showNotification from '../../../components/extras/showNotification';
+
+import axios from 'axios';
+
 const index = () => {
 	const [amypologo, setAmypologo] = useState<string | null>(null);
 	const [carousel1, setcarousel1] = useState<string | null>(null);
 	const [carousel2, setcarousel2] = useState<string | null>(null);
 	const [carousel3, setcarousel3] = useState<string | null>(null);
+	const endpoint = `${process.env.NEXT_PUBLIC_API_END_POINT}/login`;
 
 	useEffect(() => {
 		const loadimages = async () => {
@@ -55,13 +60,27 @@ const index = () => {
 		},
 
 		validate(values) {
-			// console.log('error called');
 			const errors = login_validations(values);
 			return errors;
 		},
 
-		onSubmit(values) {
-			console.log('submit');
+		onSubmit: async (values) => {
+			try {
+				const value: any = values;
+				const response: any = await axios.post(endpoint, value);
+				// console.log(response);
+			} catch (error: any) {
+				if (error.response?.status === 422) {
+					const serverErrors = error.response.data.errors;
+					formik.setErrors(serverErrors);
+				} else {
+					showNotification(
+						'Request Failed',
+						'Something went wrong on the server. Please try again later.',
+						'danger',
+					);
+				}
+			}
 		},
 	});
 
@@ -177,7 +196,7 @@ const index = () => {
 										Please, Sign in to continue!
 									</div>
 
-									<form className='row g-4' onSubmit={formik.onSubmit}>
+									<form className='row g-4' onSubmit={formik.handleSubmit}>
 										<>
 											<div className='col-12'>
 												<FormGroup
@@ -222,7 +241,10 @@ const index = () => {
 												<p className='text-end mt-1'>Forget Password ?</p>
 											</div>
 											<div className='col-12'>
-												<Button color='success' className='w-100 py-3'>
+												<Button
+													color='success'
+													className='w-100 py-3'
+													type='submit'>
 													Login
 												</Button>
 											</div>

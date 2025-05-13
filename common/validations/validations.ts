@@ -149,7 +149,7 @@ export const Topic_validation = (values: any, type: number) => {
 };
 
 export const login_validations = (values: any) => {
-	
+
 	const errors: any = {};
 
 	if (!values.email) {
@@ -158,9 +158,9 @@ export const login_validations = (values: any) => {
 		errors.email = 'Enter a valid email address';
 	}
 
-	if (!values.pass) {
+	if (!values.password) {
 		errors.password = 'password is required';
-	} else if (!values.password.length < 6) {
+	} else if (values.password.length < 6) {
 		errors.password = 'Password must be at least 6 characters';
 	}
 
