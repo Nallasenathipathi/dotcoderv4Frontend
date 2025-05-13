@@ -3,7 +3,7 @@ type LanguageCategory = {
 	text: string;
 };
 
-const LanguageCategories: LanguageCategory[] = [
+export const LanguageCategories: LanguageCategory[] = [
 	{ value: 1, text: 'Compiling Language' },
 	{ value: 2, text: 'Front End' },
 	{ value: 3, text: 'Back End' },
@@ -12,4 +12,9 @@ const LanguageCategories: LanguageCategory[] = [
 	{ value: 6, text: 'Cyber Security' },
 ];
 
-export default LanguageCategories;
+export const GenderCategories: LanguageCategory[] = [
+	{ value: 1, text: 'Male' },
+	{ value: 2, text: 'Female' },
+	{ value: 3, text: 'Others' },
+];
+
