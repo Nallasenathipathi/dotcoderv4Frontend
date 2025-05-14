@@ -9,6 +9,11 @@
 	font-weight: 500;
 	color: #323232a6;
 }
+
+
+.csm_testcase{
+	background-color: red;
+}
 [theme='dark'] .csm_label {
 	color: #dee2e6a6;
 }
