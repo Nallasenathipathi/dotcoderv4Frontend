@@ -12,7 +12,7 @@
 
 
 .csm_testcase{
-	background-color: red;
+	height: 40vh;
 }
 [theme='dark'] .csm_label {
 	color: #dee2e6a6;

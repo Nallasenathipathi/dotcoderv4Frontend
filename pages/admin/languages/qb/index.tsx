@@ -8,8 +8,10 @@ import PageWrapper from '../../../../layout/PageWrapper/PageWrapper';
 import Select from '../../../../components/bootstrap/forms/Select';
 import Button from '../../../../components/bootstrap/Button';
 import { IServiceProps } from '../../../../common/data/serviceDummyData';
+import TestCase from '../test_case/index'
 // import useDarkMode from '../../../../hooks/useDarkMode';
 import classNames from 'classnames';
+import Icon from '../../../../components/icon/Icon';
 const USER_APPOINTMENT: IUserAppointment = {
 	APPROVED: 'Approved',
 	PENDING: 'Pending',
@@ -173,6 +175,12 @@ interface IUserAppointment {
 
 const Index: React.FC = () => {
 
+	const [doc, setDoc] = useState(
+		(typeof window !== 'undefined' &&
+			localStorage.getItem('facit_asideDocStatus') === 'true') ||
+			false,
+	);
+
 	const { themeStatus, darkModeStatus } = useDarkMode();
 	const [activeUserAppointmentTab, setActiveUserAppointmentTab] = useState<
 		IUserAppointment['key']
@@ -286,7 +294,7 @@ const Index: React.FC = () => {
 				<CardActions>
 				<Button icon='ControlPoint' color='success' isLight className=''>
 								Create
-							</Button>
+				</Button>
 				</CardActions>
 			</CardHeader>
 				<CardBody>	
@@ -477,11 +485,91 @@ const Index: React.FC = () => {
 				</CardActions>
 			</CardHeader>
 			<CardBody className='table-responsive'>
-				{activeListTab2 === 'Visibe Testcase' && <div> tab1 </div> }
-				{activeListTab2 === 'Random Testcase' && <div> tab2 </div>}
-				{activeListTab2 === 'Special Testcase' && <div> tab3 </div>}
+				{activeListTab2 === 'Visibe Testcase' && <TestCase/> }
+				{activeListTab2 === 'Random Testcase' && <TestCase/>}
+				{activeListTab2 === 'Special Testcase' && <TestCase/>}
+				<div className='row g-4 mt-2'>
+						<div className='col-md-6 position-relative'>
+						
+						<div 
+							role='presentation' style={{top:'8px', right:'0'}}
+							className='navigation-item cursor-pointer position-absolute top-1 z-3'
+							onClick={() => {
+								localStorage.setItem('facit_asideDocStatus', String(!doc));
+								setDoc(!doc);
+							}}
+							>
+							<span style={{color:'#8c8c8c'}}>
+								<span className='navigation-link-info'>
+									<Icon
+										icon={doc ? 'ToggleOn' : 'ToggleOff'}
+										color={doc ? 'success' : undefined}
+										className='navigation-icon'
+									/>
+									
+								</span>
+								
+							</span>
+						</div>
+							<FormGroup id='firstName' label='Question Title' isFloating>
+								<Input disabled
+									className=''
+									placeholder='First Name'
+									autoComplete='additional-name'
+									onChange={formik.handleChange}
+									onBlur={formik.handleBlur}
+									value={formik.values.firstName}
+									isValid={formik.isValid}
+									isTouched={formik.touched.firstName}
+									invalidFeedback={formik.errors.firstName}
+									validFeedback='Looks good!'
+								/>
+							</FormGroup>
+						</div>
+						<div className='col-md-6 position-relative'>
+						
+						<div 
+							role='presentation' style={{top:'8px', right:'0'}}
+							className='navigation-item cursor-pointer position-absolute top-1 z-3'
+							onClick={() => {
+								localStorage.setItem('facit_asideDocStatus', String(!doc));
+								setDoc(!doc);
+							}}
+							>
+							<span style={{color:'#8c8c8c'}}>
+								<span className='navigation-link-info'>
+									<Icon
+										icon={doc ? 'ToggleOn' : 'ToggleOff'}
+										color={doc ? 'success' : undefined}
+										className='navigation-icon'
+									/>
+									
+								</span>
+								
+							</span>
+						</div>
+							<FormGroup id='firstName' label='Question Title' isFloating>
+								<Input 
+									className=''
+									placeholder='First Name'
+									autoComplete='additional-name'
+									onChange={formik.handleChange}
+									onBlur={formik.handleBlur}
+									value={formik.values.firstName}
+									isValid={formik.isValid}
+									isTouched={formik.touched.firstName}
+									invalidFeedback={formik.errors.firstName}
+									validFeedback='Looks good!'
+								/>
+							</FormGroup>
+						</div>
+						
+				</div>
+
+				
 			</CardBody>
 			</Card>
+			
 			
 		</PageWrapper>
 
