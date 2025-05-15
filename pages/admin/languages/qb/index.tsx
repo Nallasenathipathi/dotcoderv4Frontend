@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState , useEffect, useRef } from 'react';
 import Card, { CardActions, CardBody, CardHeader, CardLabel, CardTitle } from '../../../../components/bootstrap/Card';
 import FormGroup from '../../../../components/bootstrap/forms/FormGroup';
 import Input from '../../../../components/bootstrap/forms/Input';
@@ -12,6 +12,8 @@ import TestCase from '../test_case/index'
 // import useDarkMode from '../../../../hooks/useDarkMode';
 import classNames from 'classnames';
 import Icon from '../../../../components/icon/Icon';
+import TomSelect from 'tom-select';
+import 'tom-select/dist/css/tom-select.bootstrap5.css';
 const USER_APPOINTMENT: IUserAppointment = {
 	APPROVED: 'Approved',
 	PENDING: 'Pending',
@@ -23,6 +25,7 @@ interface ClassNames {
 
 	default: ClassNames;
 }
+
 const surfing: IServiceProps = {
 	name: 'Surfing',
 	icon: 'Surfing',
@@ -174,6 +177,47 @@ interface IUserAppointment {
 }
 
 const Index: React.FC = () => {
+	const selectRef2 = useRef<HTMLSelectElement | null>(null);
+	useEffect(() => {
+		const interval = setInterval(() => {
+		  const el = selectRef2.current;
+		  if (el && el.offsetParent !== null) {
+			// visible and in DOMx
+			if (!(el as any)._tom) {
+			  new TomSelect(el, {
+				plugins: ['remove_button'],
+				create: true,
+				persist: false,
+			  });
+			}
+			clearInterval(interval); // cleanup
+		  }
+		}, 100); // check every 100ms
+	  
+		return () => clearInterval(interval); // cleanup on unmount
+	  }, []);
+
+	const selectRef = useRef<HTMLSelectElement | null>(null);
+
+	useEffect(() => {
+		const interval = setInterval(() => {
+		  const el = selectRef.current;
+		  if (el && el.offsetParent !== null) {
+			// visible and in DOMx
+			if (!(el as any)._tom) {
+			  new TomSelect(el, {
+				plugins: ['remove_button'],
+				create: true,
+				persist: false,
+			  });
+			}
+			clearInterval(interval); // cleanup
+		  }
+		}, 100); // check every 100ms
+	  
+		return () => clearInterval(interval); // cleanup on unmount
+	  }, []);
+	  
 
 	const [doc, setDoc] = useState(
 		(typeof window !== 'undefined' &&
@@ -486,7 +530,7 @@ const Index: React.FC = () => {
 			</CardHeader>
 			<CardBody className='table-responsive'>
 				{activeListTab2 === 'Visibe Testcase' && <TestCase/> }
-				{activeListTab2 === 'Random Testcase' && <TestCase/>}
+				{activeListTab2 === 'Random Testcase' && <div> saasm</div>}
 				{activeListTab2 === 'Special Testcase' && <TestCase/>}
 				<div className='row g-4 mt-2'>
 						<div className='col-md-6 position-relative'>
@@ -565,6 +609,61 @@ const Index: React.FC = () => {
 						</div>
 						
 				</div>
+				<div className='row'>
+					
+					<div className="mb-3 col-md-6 position-relative mt-4">
+								<div className='csm_label position-absolute top-1 start-2 z-1' style={{left:'22px'}}>
+									Languages
+								</div>
+						  
+						  <select
+							id="college"
+							
+							ref={selectRef}
+							className="form-select csm_tom_select"
+							multiple
+						  ><option value="" disabled selected hidden>
+						  Select or add colleges...
+						</option>
+							<option value="1">SKCT</option>
+							<option value="2">PSG</option>
+							<option value="3">KCT</option>
+						  </select>
+					</div>
+
+					<div className="mb-3 col-md-6 position-relative mt-4">
+								<div className='csm_label position-absolute top-1 start-2 z-1' style={{left:'22px'}}>
+									Languages
+								</div>
+						  
+						  <select
+							id="college"
+							
+							ref={selectRef2}
+							className="form-select csm_tom_select"
+							multiple
+						  ><option value="" disabled selected hidden>
+						  Select or add colleges...
+						</option>
+							<option value="1">SKCT</option>
+							<option value="2">PSG</option>
+							<option value="3">KCT</option>
+						  </select>
+					</div>
+				</div>
+
+				<div className='d-flex gap-3 align-itms-center justify-content-center mt-3'>
+						<Button icon='SlowMotionVideo' color='info' isLight className=''>
+							Run
+						</Button>
+						<Button icon='PublishedWithChanges' color='success' isLight className=''>
+							Save
+						</Button>
+						<Button icon='Cancel' color='danger' isLight className=''>
+							Cancel
+						</Button>
+					</div>
+				
 
 				
 			</CardBody>
