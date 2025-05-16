@@ -9,7 +9,7 @@ import Button from '../../../components/bootstrap/Button';
 import { useFormik } from 'formik';
 import { login_validations } from '../../../common/validations/validations';
 import showNotification from '../../../components/extras/showNotification';
-
+import Cookies from 'js-cookie';
 import axios from 'axios';
 
 const index = () => {
@@ -69,6 +69,18 @@ const index = () => {
 				const value: any = values;
 				const response: any = await axios.post(endpoint, value);
 				// console.log(response);
+				const token = response.data.token;
+
+				// Store token in a secure cookie (for frontend use only)
+				Cookies.set('token', token, {
+					expires: 1, // 1 day
+					secure: true, // Only on HTTPS
+					sameSite: 'Strict', // Protect from CSRF
+					path: '/',
+				});
+
+				// Optional: redirect or show success
+				console.log('Login success, token stored in cookie');
 			} catch (error: any) {
 				if (error.response?.status === 422) {
 					const serverErrors = error.response.data.errors;
