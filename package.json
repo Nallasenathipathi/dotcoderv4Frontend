@@ -54,6 +54,7 @@
 		"react-use": "^17.6.0",
 		"sass": "^1.86.0",
 		"swapy": "^1.0.5",
+		"tom-select": "^2.4.3",
 		"use-clipboard-copy": "^0.2.0"
 	},
 	"devDependencies": {
